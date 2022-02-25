@@ -8,7 +8,8 @@
   "private": false,
   "scripts": {
     "serve": "vite",
-    "build": "yarn cg:version && rimraf lib &&rollup -c ./build/rollup.config.js",
+    "build": "vue-tsc --noEmit && vite build",
+    "build:lib": "yarn cg:version && rimraf lib &&rollup -c ./build/rollup.config.js",
     "build:style": "gulp --gulpfile build/gulp.compile.js",
     "cg:version": "node bin/version.js",
     "commit": "git-cz",
