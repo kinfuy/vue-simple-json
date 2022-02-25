@@ -2,7 +2,7 @@
   "name": "vue-simple-json",
   "version": "1.0.1",
   "description": "Minimalist JSON editor",
-  "main": "index.js",
+  "main": "lib/index.js",
   "author": "Thezero",
   "license": "MIT",
   "private": false,
