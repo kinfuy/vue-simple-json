@@ -8,8 +8,9 @@
   "private": false,
   "scripts": {
     "serve": "vite",
-    "build": "rimraf lib &&rollup -c ./build/rollup.config.js",
+    "build": "yarn cg:version && rimraf lib &&rollup -c ./build/rollup.config.js",
     "build:style": "gulp --gulpfile build/gulp.compile.js",
+    "cg:version": "node bin/version.js",
     "commit": "git-cz",
     "lint": "eslint -c ./.eslintrc.js --fix --ext .jsx,.js,.vue,.ts \"package/**/*.{jsx,js,ts,vue}\"",
     "lint:style": "stylelint \"package/**/*.{vue,less}\" --config ./.stylelintrc --fix",
