@@ -2,19 +2,25 @@
 
 极简的 jsonEditor 插件
 
+
+## 安装
+
+
+`yarn add vue-simple-json`
+
 ## demo
 
 ### 普通 demo
 
-![案例](./template/demo.png)
+![案例](https://gitee.com/Y_onghu/simple-json/raw/master/template/demo.png)
 
 ### 自定义操作符 demo
 
-![案例](./template/demo1.png)
+![案例](https://gitee.com/Y_onghu/simple-json/raw/master/template/demo1.png)
 
 ### 自定义节点 demo
 
-![案例](./template/demo2.png)
+![案例](https://gitee.com/Y_onghu/simple-json/raw/master/template/demo2.png)
 
 ## 功能支持
 

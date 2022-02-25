@@ -4,6 +4,7 @@
 ### 🐛 Bug Fixes | Bug 修复
 
 * config ([419d7f0](https://gitee.com/Y_onghu/simple-json/commit/419d7f0))
+* detail ([9c8f022](https://gitee.com/Y_onghu/simple-json/commit/9c8f022))
 
 
 

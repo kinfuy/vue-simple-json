@@ -57,7 +57,7 @@
     "typescript": "^4.5.4",
     "vite": "^2.8.0",
     "vue": "^3.2.16",
-    "vue-simple-json": "^1.0.0",
+    "vue-simple-json": "^1.0.1",
     "vue-tsc": "^0.29.8"
   },
   "dependencies": {
