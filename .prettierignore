@@ -1,0 +1,7 @@
+/node_modules
+/dist
+/build
+/*.*
+.prettierignore
+.stylelintrc
+src/styles/iconfont
