@@ -1,3 +1,4 @@
+import { JsonEditorConfig } from './../type/simple-json';
 export const defaultConfig: JsonEditorConfig = {
   keyColor: {
     string: '#71aff1',

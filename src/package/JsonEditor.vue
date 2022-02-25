@@ -12,7 +12,7 @@
 import { defineComponent, provide, ref, watch, toRef, PropType } from 'vue';
 import { deepDeleteJson, deepUpdataJson } from './utils';
 import SubJsonNode from './components/SubJsonNode.vue';
-import { ExtendCatchKeyItem, JsonEditorConfig, JsonItem, PropJsonItem, SpeciallyKeyItem } from '../typings/simple-json';
+import { ExtendCatchKeyItem, JsonEditorConfig, JsonItem, PropJsonItem, SpeciallyKeyItem } from './type/simple-json';
 export default defineComponent({
   name: 'SimpleJson',
   components: { SubJsonNode },

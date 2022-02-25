@@ -17,7 +17,12 @@
     <span v-if="!stateData.root" class="json-node-separator">:</span>
     <span :class="['json-node-value']">
       <span v-if="isSub && !valueSlot" class="hidden-separator" @click="handleExtend()">
-        <IconSvg v-if="isExtend" fix-class="json-node-icon json-node-icon-blue" if="isExtend" name="icon-zhankai"></IconSvg>
+        <IconSvg
+          v-if="isExtend"
+          fix-class="json-node-icon json-node-icon-blue"
+          if="isExtend"
+          name="icon-zhankai"
+        ></IconSvg>
         <IconSvg v-else fix-class="json-node-icon json-node-icon-blue" name="icon-zhankai-copy"></IconSvg>
       </span>
       <span v-if="isSub && !valueSlot">{{ stateData.type === 'object' ? '{' : '[' }}</span>
@@ -79,35 +84,38 @@ import { _UUID, deepReductionJson, deepAnalysisJson, mergeArray, updataArrIndex 
 import clonedeep from 'lodash.clonedeep';
 import { defaultConfig } from './../libs/defaultConfig';
 import Render from './Render';
-import { EventTrigger, JsonEditorContext, JsonItem, OperationItem } from '../../typings/simple-json';
+import { EventTrigger, JsonEditorContext, JsonItem, OperationItem } from './../type/simple-json';
 export default defineComponent({
   name: 'JsonNode',
   components: { ValueEditor, IconSvg, Render },
   props: {
     json: {
       type: Object as PropType<JsonItem>,
-      required: true,
+      required: true
     },
     currectLevel: {
       type: Number,
-      default: 0,
-    },
+      default: 0
+    }
   },
   setup(props) {
     const stateData = ref<JsonItem>();
-    const { extendLevel, extendAll, extendCatchKey, disabled, jsonConfig } = inject('JsonEditorContext') as JsonEditorContext;
+    const { extendLevel, extendAll, extendCatchKey, disabled, jsonConfig } = inject(
+      'JsonEditorContext'
+    ) as JsonEditorContext;
     watch(
       () => props.json,
-      (val) => {
+      val => {
         stateData.value = val;
       },
       {
-        immediate: true,
+        immediate: true
       }
     );
     // 用户允许类型
     const allowType = computed(() => {
-      if (jsonConfig.value && jsonConfig.value.allowType) return mergeArray(jsonConfig.value.allowType, defaultConfig.allowType);
+      if (jsonConfig.value && jsonConfig.value.allowType)
+        return mergeArray(jsonConfig.value.allowType, defaultConfig.allowType);
       return defaultConfig.allowType;
     });
     const customAppendOperate = computed(() => {
@@ -127,20 +135,20 @@ export default defineComponent({
     const eventTrigger = inject('eventTrigger') as EventTrigger;
     watch(
       () => extendLevel.value,
-      (val) => {
-        const extend = extendCatchKey.value.some((x) => {
+      val => {
+        const extend = extendCatchKey.value.some(x => {
           return x.id === stateData.value?.id;
         });
         if (val >= props.currectLevel || extendAll.value || extend) {
           isExtend.value = true;
           eventTrigger('extend', {
             isExtend: isExtend.value,
-            id: stateData.value?.id,
+            id: stateData.value?.id
           });
         }
       },
       {
-        immediate: true,
+        immediate: true
       }
     );
     const handleExtend = () => {
@@ -152,7 +160,7 @@ export default defineComponent({
       if (item.type === 'array' || item.type === 'object') {
         item.value = [];
       } else {
-        allowType.value.forEach((x) => {
+        allowType.value.forEach(x => {
           if (x.type === item.type) {
             item.value = x.default;
           }
@@ -161,7 +169,7 @@ export default defineComponent({
       eventTrigger('type-switch', {
         level: props.currectLevel,
         key: stateData.value?.key,
-        value: stateData.value?.value,
+        value: stateData.value?.value
       });
     };
     // 鼠标悬浮
@@ -203,7 +211,7 @@ export default defineComponent({
         id: _UUID(),
         key: key,
         value: 'new attr',
-        type: 'string',
+        type: 'string'
       };
       const addType = jsonConfig.value.addType !== undefined ? jsonConfig.value.addType : defaultConfig.addType;
       if (addType && stateData.value) {
@@ -241,14 +249,14 @@ export default defineComponent({
       if (stateData.value) {
         const currect = {
           key: stateData.value.key,
-          value: isSub.value ? deepReductionJson(stateData.value.value) : clonedeep(stateData.value.value),
+          value: isSub.value ? deepReductionJson(stateData.value.value) : clonedeep(stateData.value.value)
         };
-        operate.clickEvent(currect).then((customValue) => {
+        operate.clickEvent(currect).then(customValue => {
           if (customValue && stateData.value) {
             stateData.value.type = customValue.type;
             if (customValue.type === 'array' || customValue.type === 'object') {
               stateData.value.value = deepAnalysisJson({
-                [stateData.value.key]: customValue,
+                [stateData.value.key]: customValue
               })[0].value;
             } else {
               stateData.value.value = customValue.value;
@@ -260,7 +268,7 @@ export default defineComponent({
 
     const valueSlot = computed(() => {
       let isSlot = false;
-      allowType.value.forEach((x) => {
+      allowType.value.forEach(x => {
         if (x.type === stateData.value?.type) {
           isSlot = x.slot;
         }
@@ -293,12 +301,12 @@ export default defineComponent({
       handleCustom,
       allowType,
       customAppendOperate,
-      valueSlot,
+      valueSlot
     };
-  },
+  }
 });
 </script>
-<style lang="less" scoped>
+<!-- <style lang="less" scoped>
 .json-node {
   min-height: 30px;
   & .json-node {
@@ -375,4 +383,4 @@ export default defineComponent({
     z-index: -1;
   }
 }
-</style>
+</style> -->

@@ -20,7 +20,7 @@
 </template>
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
-import { JsonItem } from '../../typings/simple-json';
+import { JsonItem } from './../type/simple-json';
 import JsonNode from './JsonNode.vue';
 export default defineComponent({
   name: 'SubJsonNode',
@@ -28,13 +28,13 @@ export default defineComponent({
   props: {
     json: {
       type: Object as PropType<JsonItem>,
-      required: true,
+      required: true
     },
     currectLevel: {
       type: Number,
-      default: 0,
-    },
-  },
+      default: 0
+    }
+  }
 });
 </script>
 <style lang="less" scoped></style>

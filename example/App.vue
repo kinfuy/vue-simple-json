@@ -18,7 +18,7 @@
 </template>
 <script setup lang="ts">
 import { ref, h } from 'vue';
-import { deepAnalysisJson, deepReductionJson } from './../src';
+import { deepAnalysisJson, deepReductionJson } from './../lib/index.js';
 import { jsonStr } from './data';
 const json = ref(deepAnalysisJson(JSON.parse(jsonStr)));
 const config = {

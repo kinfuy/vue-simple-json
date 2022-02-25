@@ -1,4 +1,4 @@
-import { JsonItem, AllowTypeItem } from './../../typings/simple-json';
+import { JsonItem, AllowTypeItem } from './../type/simple-json';
 export const typeOf = (obj: any): string => {
   const { toString } = Object.prototype;
   const map: { [key: string]: string } = {

@@ -1,12 +1,12 @@
 import { Ref, VNodeArrayChildren } from 'vue';
 
-interface PropJsonItem {
+export interface PropJsonItem {
   id: string;
   key: string | number;
   value: any;
   type: string;
 }
-interface JsonItem {
+export interface JsonItem {
   id: string;
   key: string | number;
   value: any;
@@ -17,18 +17,18 @@ interface JsonItem {
   type: string;
   root?: boolean;
 }
-type EventTrigger = (name: string, value: any) => void;
+export type EventTrigger = (name: string, value: any) => void;
 
-interface ExtendCatchKeyItem {
+export interface ExtendCatchKeyItem {
   id: string;
 }
 
-interface SpeciallyKeyItem {
+export interface SpeciallyKeyItem {
   id: string;
   type: string;
 }
 
-interface JsonEditorContext {
+export interface JsonEditorContext {
   extendCatchKey: Ref<ExtendCatchKeyItem[]>;
   speciallyKey: Ref<ExtendCatchKeyItem[]>;
   disabled: Ref<boolean>;
@@ -36,7 +36,7 @@ interface JsonEditorContext {
   extendLevel: Ref<number>;
   jsonConfig: Ref<JsonEditorConfig>;
 }
-interface OperationItem {
+export interface OperationItem {
   key: string;
   text?: string;
   title: string;
@@ -44,13 +44,13 @@ interface OperationItem {
   clickEvent: ({ key, value }: { key: string | number; value: any }) => Promise<{ type: string; value: any }>;
   render?: () => () => VNodeArrayChildren;
 }
-interface AllowTypeItem {
+export interface AllowTypeItem {
   type: string;
   desc: string;
   default: any;
   slot?: boolean;
 }
-interface JsonEditorConfig {
+export interface JsonEditorConfig {
   keyColor: {
     [key: string]: string;
     string: string;

@@ -107,7 +107,7 @@ export default defineComponent({
   }
 });
 </script>
-<style lang="less" scoped>
+<!-- <style lang="less" scoped>
 .value-editor {
   display: inline-block;
   height: 100%;
@@ -124,4 +124,4 @@ export default defineComponent({
     -webkit-user-modify: read-write-plaintext-only; // 实现div 可编辑状态仅能输入纯文本
   }
 }
-</style>
+</style> -->

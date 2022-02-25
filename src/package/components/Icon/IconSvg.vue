@@ -29,7 +29,7 @@ export default defineComponent({
 });
 </script>
 
-<style lang="less" scoped>
+<!-- <style lang="less" scoped>
 .svg-icon {
   width: 1em;
   height: 1em;
@@ -45,4 +45,4 @@ export default defineComponent({
 .margin {
   margin: 0 8px;
 }
-</style>
+</style> -->
