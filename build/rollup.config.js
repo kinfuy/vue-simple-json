@@ -7,6 +7,8 @@ import path from 'path'
 import pkg from './../package.json';
 import postcssPlugin from 'rollup-plugin-postcss'
 import autoprefixer from 'autoprefixer';
+import sizes from 'rollup-plugin-sizes';
+import { terser } from 'rollup-plugin-terser';
 const deps = Object.keys(pkg.dependencies);
 export default [
     {
@@ -16,10 +18,12 @@ export default [
             file: 'lib/index.js'
         },
         plugins: [
+            // terser(),
             vuePlugin({
                 target: 'browser',
                 css: false,
             }),
+            sizes(),
             nodeResolve(),
             postcssPlugin({
                 plugins: [autoprefixer],
@@ -33,6 +37,12 @@ export default [
                 },
                 abortOnError: false
             }),
+            // babel({
+            //     babelHelpers: 'external',
+            //     extensions: ['.js', '.jsx', '.vue', '.ts', '.tsx'],
+            //     presets: ['@babel/preset-env'],
+            //     plugins: ['@babel/plugin-external-helpers'],
+            // }),
             babel({
                 babelHelpers: 'runtime',
                 exclude: 'node_modules/**',
