@@ -7,7 +7,7 @@ import path from 'path'
 import pkg from './../package.json';
 import postcssPlugin from 'rollup-plugin-postcss'
 import autoprefixer from 'autoprefixer';
-import sizes from 'rollup-plugin-sizes';
+// import sizes from 'rollup-plugin-sizes';
 import { terser } from 'rollup-plugin-terser';
 const deps = Object.keys(pkg.dependencies);
 export default [
@@ -18,12 +18,12 @@ export default [
             file: 'lib/index.js'
         },
         plugins: [
-            // terser(),
+            terser(),
             vuePlugin({
                 target: 'browser',
                 css: false,
             }),
-            sizes(),
+            // sizes(),
             nodeResolve(),
             postcssPlugin({
                 plugins: [autoprefixer],
