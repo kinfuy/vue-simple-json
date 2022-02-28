@@ -1,4 +1,5 @@
 #忽略目录
+dist
 example
 src
 public
@@ -6,9 +7,6 @@ bin
 build
 .history
 node_modules
-changelog.config.js
-
-
 .bowserslistrc
 .eslintignore
 .eslintrc.js
@@ -17,10 +15,13 @@ changelog.config.js
 .prettierignore
 .prettierrc
 .stylelintrc
-commitlint.config.js
 index.html
 tsconfig.json
+template
 #忽略指定文件
 vite.config.ts
 babel.config.js
+changelog.config.js
+commitlint.config.js
 *.map
+CHANGELOG.md

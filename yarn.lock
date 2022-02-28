@@ -7740,10 +7740,10 @@ vscode-vue-languageservice@0.29.8:
     vscode-pug-languageservice "0.29.8"
     vscode-typescript-languageservice "0.29.8"
 
-vue-simple-json@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/vue-simple-json/-/vue-simple-json-1.0.1.tgz#46cc23d3b15a04c9a24b2ca363db6e069384700a"
-  integrity sha512-gr4um7KQoLgsrEevazVCuM2tYt8laJpjMSZIn23kXSsZ1SEBqygQlUSLQyvMzLUtLhe7z+9hcoBnAEz7szioJw==
+vue-simple-json@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/vue-simple-json/-/vue-simple-json-1.0.3.tgz#3085e6f5d076087b0d801838af79fe8e2000d496"
+  integrity sha512-EtZIqfH2r5QqDlm1RxX+so8UwgkGVP1p1vZxQE55PVDzLG5XrQbTPsmg7gadAyr+l0ROMNlQZcZ6WtZZ0N3Byw==
   dependencies:
     lodash.clonedeep "^4.5.0"
 
