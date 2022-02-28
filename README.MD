@@ -8,6 +8,9 @@
 
 `yarn add vue-simple-json`
 
+## 使用
+
+[详见example](https://github.com/HitStarrySky/vue-simple-json/tree/master/example)
 ## demo
 
 ### 普通 demo
@@ -34,7 +37,7 @@
 
 | 参数         | 说明             | 类型    | 默认值(示例)                           |
 | ------------ | ---------------- | ------- | -------------------------------------- |
-| json         | json 传入参数    | Array   | 需要使用 deepAnalysisJson 解析后的数据 |
+| json         | json 传入参数    | Array   | 需要使用 deepAnalysisJson(该函数组件导出，可自定义) 解析后的数据 |
 | disabled     | 是否禁用编辑     | Boolean | false                                  |
 | extend-all   | 是否展开全部层级 | Boolean | false                                  |
 | extend-level | 展开层级         | Number  | 1 （优先级小于 extend-all）            |
