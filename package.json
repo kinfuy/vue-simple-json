@@ -1,6 +1,6 @@
 {
   "name": "vue-simple-json",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Minimalist JSON editor",
   "main": "lib/index.js",
   "author": "Thezero",
@@ -16,7 +16,8 @@
     "lint": "eslint -c ./.eslintrc.js --fix --ext .jsx,.js,.vue,.ts \"package/**/*.{jsx,js,ts,vue}\"",
     "lint:style": "stylelint \"package/**/*.{vue,less}\" --config ./.stylelintrc --fix",
     "log": "npm run changelog",
-    "changelog": "conventional-changelog -p custom-config  -i CHANGELOG.md  -s -r 0 -n ./changelog.config.js"
+    "changelog": "conventional-changelog -p custom-config  -i CHANGELOG.md  -s -r 0 -n ./changelog.config.js",
+    "push": "git push origin master && git push githup master"
   },
   "keywords": [
     "json",
