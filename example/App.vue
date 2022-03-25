@@ -8,7 +8,7 @@
       :config="config"
       @change="handleJsonChange"
     >
-      <template #type-switch> </template>
+      <!-- <template #type-switch> </template> -->
       <template #node-value="{ nodeValue }">
         <input v-if="nodeValue.type === 'color'" v-model="nodeValue.value" class="input" type="color" />
         <input v-if="nodeValue.type === 'date'" v-model="nodeValue.value" type="Date" />

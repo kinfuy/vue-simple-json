@@ -1,6 +1,6 @@
 {
   "name": "vue-simple-json",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "description": "Minimalist JSON editor",
   "main": "lib/index.js",
   "author": "Thezero",
@@ -62,11 +62,11 @@
     "typescript": "^4.5.4",
     "vite": "^2.8.0",
     "vue": "^3.2.16",
+    "vue-simple-json": "^1.0.6",
     "vue-tsc": "^0.29.8"
   },
   "dependencies": {
-    "lodash.clonedeep": "^4.5.0",
-    "vue-simple-json": "^1.0.3"
+    "lodash.clonedeep": "^4.5.0"
   },
   "stylelint": {
     "extends": [
