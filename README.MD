@@ -19,7 +19,16 @@
 
 ## 安装
 
- `yarn add vue-simple-json`
+```shell
+
+# pnpm
+pnpm add vue-simple-json
+# yarn
+yarn add vue-simple-json
+# npm
+npm install vue-simple-json
+
+```
 
 ## 使用
 
