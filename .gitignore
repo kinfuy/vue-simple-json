@@ -2,26 +2,3 @@ node_modules
 .history
 lib
 dist
-
-#publish 打开
-# example
-# src
-# bin
-# build
-# .bowserslistrc
-# .eslintignore
-# .eslintrc.js
-# .huskyrc
-# .lintstagedrc
-# .prettierignore
-# .prettierrc
-# .stylelintrc
-# index.html
-# tsconfig.json
-# template
-# vite.config.ts
-# babel.config.js
-# changelog.config.js
-# commitlint.config.js
-# *.map
-# CHANGELOG.md
