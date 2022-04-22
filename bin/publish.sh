@@ -2,9 +2,9 @@
 
 set -e
 
-yarn
+pnpm install
 
-yarn build
+pnpm build
 
 npm publish --access public
 cd -

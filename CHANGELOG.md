@@ -1,4 +1,25 @@
-## [1.0.4](https://gitee.com/Y_onghu/simple-json/compare/v1.0.3...v1.0.4) (2022-02-28)
+## [1.0.7](https://gitee.com/Y_onghu/simple-json/compare/v1.0.3...v1.0.7) (2022-04-22)
+
+
+### ✨ Features | 新功能
+
+* 打包重构 ([252b9bc](https://gitee.com/Y_onghu/simple-json/commit/252b9bc))
+* githup action ([ced0281](https://gitee.com/Y_onghu/simple-json/commit/ced0281))
+* githup issue ([3c4d614](https://gitee.com/Y_onghu/simple-json/commit/3c4d614))
+
+
+### 🐛 Bug Fixes | Bug 修复
+
+* detail ([bb2d3e5](https://gitee.com/Y_onghu/simple-json/commit/bb2d3e5))
+* detail ([62a2783](https://gitee.com/Y_onghu/simple-json/commit/62a2783))
+* detail ([a5a8fd0](https://gitee.com/Y_onghu/simple-json/commit/a5a8fd0))
+* detail ([86468a2](https://gitee.com/Y_onghu/simple-json/commit/86468a2))
+
+
+### 📝 Documentation | 文档
+
+* update readme ([c28432f](https://gitee.com/Y_onghu/simple-json/commit/c28432f))
+* update readme ([864cdbb](https://gitee.com/Y_onghu/simple-json/commit/864cdbb))
 
 
 
