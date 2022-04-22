@@ -8,26 +8,12 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
         with:
-          fetch-depth: 0
-      - name: Add master branch
-        run: git branch master origin/master
-      - name: Setup node
-        uses: actions/setup-node@v3
+          node-version: 16
+      - run: npm install
+      - run: cd dist
+      - uses: JS-DevTools/npm-publish@v1
         with:
-          node-version: '16'
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: latest
-      - name: Install dependencies
-        run: pnpm i --frozen-lockfile
-      - name: Gen npmrc
-        run: echo "//registry.npmjs.com/:_authToken=${{ secrets.NPM_PUBLISH_TOKEN }}" >> ./.npmrc
-      - name: Build&publish
-        run: sh ./bin/publish.sh
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_PUBLISH_TOKEN}}
-          REGISTRY: https://registry.npmjs.com/
-          FORCE_COLOR: 2
+          token: ${{ secrets.NPM_PUBLISH_TOKEN }}
