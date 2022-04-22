@@ -2,7 +2,7 @@
 
 set -e
 
-npm install --no-frozen-lockfile --ignore-scripts
+npm install
 
 npm build
 
