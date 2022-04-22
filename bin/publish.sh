@@ -6,6 +6,7 @@ pnpm i --frozen-lockfile
 
 pnpm build
 
+cd dist
 npm publish --access public
 cd -
 
