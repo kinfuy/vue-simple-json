@@ -1,0 +1,76 @@
+.json-node {
+  min-height: 30px;
+  & .json-node {
+    padding-left: 40px;
+  }
+  .json-node-key {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+    color: rgb(23, 154, 241);
+    text-align: left;
+    min-width: 20px;
+  }
+  .json-node-value {
+    .json-node-icon-delete {
+      margin-left: 5px;
+      display: inline-block;
+      cursor: pointer;
+      color: red;
+    }
+    .json-node-icon {
+      padding: 2px;
+      border-radius: 2px;
+      width: 16px;
+      height: 16px;
+      color: #fff;
+    }
+    .json-node-icon-blue {
+      background-color: #71aff1;
+    }
+    .json-node-icon-add {
+      cursor: pointer;
+      color: #71aff1;
+      &:hover {
+        color: red;
+      }
+    }
+    .hidden-separator {
+      cursor: pointer;
+      margin: 0 5px;
+      font-weight: 600;
+      &:hover {
+        color: red;
+      }
+    }
+    .json-node-operate-icon {
+      width: 16px;
+      height: 16px;
+      margin-left: 2px;
+      cursor: pointer;
+    }
+    .json-custom-warper {
+      display: inline-block;
+    }
+    .json-operate-warper {
+      margin-left: 8px;
+    }
+  }
+  .json-node-separator {
+    margin: 0 4px;
+    font-weight: 600;
+  }
+}
+.node-active {
+  position: initial;
+  &::before {
+    position: absolute;
+    right: 0;
+    left: 0;
+    height: 24px;
+    transition: all 0.3s;
+    content: '';
+    background-color: rgb(219, 235, 252);
+    z-index: -1;
+  }
+}

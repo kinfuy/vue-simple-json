@@ -4,6 +4,7 @@
     "declaration": true,
     "removeComments": true,
     "moduleResolution": "node",
+    "declarationDir": "./dist/types",
     "esModuleInterop": true,
     "jsx": "preserve",
     "jsxFactory": "h",
@@ -17,7 +18,7 @@
       "esnext", "dom"
     ]
   },
-  "include": ["package/**/*.ts", "package/**/*.d.ts", "package/**/*.tsx", "package/**/*.vue","example/**/*.d.ts","example/**/*.vue","example/**/*.ts"],
+  "include": ["src/**/*"],
   "exclude": [
     "node_modules"
   ]
