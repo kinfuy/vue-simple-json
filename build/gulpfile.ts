@@ -6,7 +6,7 @@ import { buildLib } from './build';
 import { buildStyles } from './buildStyle';
 import { parallel } from 'gulp';
 export default series(
-  withTask('update:version', () => run('pnpm run update:version')),
+  // withTask('update:version', () => run('pnpm run update:version')),
   withTask('clear', () => run('pnpm run clear')),
   parallel(
     buildLib,

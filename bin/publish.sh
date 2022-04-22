@@ -11,3 +11,4 @@ npm publish --access public
 cd -
 
 echo "✅ Publish completed"
+
