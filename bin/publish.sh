@@ -2,7 +2,7 @@
 
 set -e
 
-pnpm install --no-frozen-lockfil
+pnpm i --frozen-lockfile
 
 pnpm build
 
