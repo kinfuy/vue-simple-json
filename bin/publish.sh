@@ -2,9 +2,9 @@
 
 set -e
 
-npm install
+pnpm i --frozen-lockfile
 
-npm build
+pnpm build
 
 cd dist
 npm publish --access public
