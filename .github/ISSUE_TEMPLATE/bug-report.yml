@@ -1,7 +1,7 @@
 name: '🐛 Bug report'
 description: Create a report to help us improve vue-simple-json
-title: '🐛 [Bug]: '
-labels: ['🐛  bug']
+title: '[Bug]: '
+labels: ['bug']
 body:
   - type: markdown
     attributes:
