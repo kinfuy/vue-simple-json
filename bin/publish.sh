@@ -2,9 +2,9 @@
 
 set -e
 
-pnpm install --no-frozen-lockfile --ignore-scripts
+npm install --no-frozen-lockfile --ignore-scripts
 
-pnpm build
+npm build
 
 cd dist
 npm publish --access public

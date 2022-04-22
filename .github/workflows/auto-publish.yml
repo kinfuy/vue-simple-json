@@ -13,10 +13,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '16'
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: latest
       - name: Gen npmrc
         run: echo "//registry.npmjs.com/:_authToken=${{ secrets.NPM_PUBLISH_TOKEN }}" >> ./.npmrc
       - name: Build&publish
