@@ -34,7 +34,7 @@ const buildBundled = async (minify: boolean) => {
     bundle.write({
       format: 'iife',
       file: path.resolve(buildOutpath, `index.iife${minify ? '.min' : ''}.js`),
-      name: 'UxdIconsVue',
+      name: 'simpleJson',
       globals: { vue: 'Vue' }
     })
   ];
