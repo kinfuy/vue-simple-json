@@ -1,17 +1,14 @@
 import { series } from 'gulp';
-import { run, withTask } from './process';
-import { createZip } from './buildZip';
+import { run, withTask } from '@alqmc/build-utils';
+import { zip } from './buildZip';
 import { copyFiles } from './copyfile';
-import { buildLib } from './build';
+import { build } from './build';
 import { buildStyles } from './buildStyle';
 import { parallel } from 'gulp';
 export default series(
   // withTask('update:version', () => run('pnpm run update:version')),
   withTask('clear', () => run('pnpm run clear')),
-  parallel(
-    buildLib,
-    withTask('build:types', () => run('pnpm build:types'))
-  ),
+  build,
   parallel(buildStyles, copyFiles),
-  createZip
+  zip
 );

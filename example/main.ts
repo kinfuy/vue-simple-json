@@ -1,5 +1,5 @@
 import { createApp } from 'vue';
+import SimpleJson from '../package/index';
 import App from './App.vue';
-import { SimpleJson } from '../dist';
-import '../dist/style/index.css';
+import '../package/style/index.less';
 createApp(App).use(SimpleJson).mount('#app');

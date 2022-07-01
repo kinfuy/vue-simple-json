@@ -2,11 +2,18 @@
     "name": "vue-simple-json",
     "version": "1.0.8",
     "description": "Minimalist JSON editor",
-    "author": "Thezero",
-    "private": false,
+    "author": "alqmc",
     "license": "MIT",
+    "private": false,
     "main": "./lib/index.js",
     "module": "./es/index.mjs",
+    "types": "types",
+    "keywords": [
+        "json",
+        "typescript",
+        "vue3",
+        "json-editor"
+    ],
     "exports": {
         ".": {
             "require": "./lib/index.js",
@@ -21,13 +28,6 @@
         "./*": "./*"
     },
     "peerDependencies": {
-        "vue": "^3.2.0",
-        "lodash.clonedeep": "^4.5.0"
-    },
-    "keywords": [
-        "json",
-        "typescript",
-        "vue3",
-        "json-editor"
-    ]
+        "vue": "^3.2.0"
+    }
 }

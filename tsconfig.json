@@ -18,7 +18,7 @@
       "esnext", "dom"
     ]
   },
-  "include": ["src/**/*"],
+  "include": ["package/**/*"],
   "exclude": [
     "node_modules"
   ]

@@ -8,84 +8,101 @@
       :config="config"
       @change="handleJsonChange"
     >
-      <!-- <template #type-switch> </template> -->
+      <!-- <template #type-switch="{ nodeValue, allowType }">
+        <span @click="handleClick(nodeValue, allowType)">切换</span>
+      </template> -->
       <template #node-value="{ nodeValue }">
-        <input v-if="nodeValue.type === 'color'" v-model="nodeValue.value" class="input" type="color" />
-        <input v-if="nodeValue.type === 'date'" v-model="nodeValue.value" type="Date" />
+        <input
+          v-if="nodeValue.type === 'color'"
+          v-model="nodeValue.value"
+          class="input"
+          type="color"
+        />
+        <input
+          v-if="nodeValue.type === 'date'"
+          v-model="nodeValue.value"
+          type="Date"
+        />
       </template>
     </SimpleJson>
   </div>
 </template>
-<script setup lang="ts">
-import { ref, h } from 'vue';
-import { deepAnalysisJson, deepReductionJson } from 'vue-simple-json';
+<script setup lang="tsx">
+import { ref } from 'vue';
+import { deepAnalysisJson, deepReductionJson } from '../package/index';
 import { jsonStr } from './data';
+import type { JsonEditorConfig } from '../package/index';
+
 const json = ref(deepAnalysisJson(JSON.parse(jsonStr)));
-const config = {
+const config: JsonEditorConfig = {
   keyColor: {
     string: '#f90',
     number: 'red',
     array: '#71aff1',
     object: '#19be6b',
     date: 'red',
-    color: '#603601'
+    color: '#603601',
   },
   allowType: [
     {
       type: 'boolean',
-      desc: '布尔值'
+      desc: '布尔值',
     },
     {
       type: 'number',
-      desc: '数字'
+      desc: '数字',
     },
     {
       type: 'string',
-      desc: '字符串'
+      desc: '字符串',
     },
     {
       type: 'array',
-      desc: '数组'
+      desc: '数组',
     },
     {
       type: 'date',
       desc: '时间',
       default: '2022-02-23',
-      slot: true
+      slot: true,
     },
     {
       type: 'object',
-      desc: '对象'
+      desc: '对象',
     },
     {
       type: 'color',
       desc: '颜色',
       default: '#94B49F',
-      slot: true
-    }
+      slot: true,
+    },
   ],
   appendOperate: [
-    {
-      key: 'custom',
-      title: 'mock',
-      className: 'json-custom-icon',
-      text: 'mock',
-      clickEvent: () => {
-        return new Promise(resolve =>
-          resolve({
-            type: 'color',
-            value: '#65C18C'
-          })
-        );
-      }
-    }
-  ]
+    // {
+    //   key: 'custom',
+    //   title: 'mock',
+    //   className: 'json-custom-icon',
+    //   text: 'mock',
+    //   clickEvent: () => {
+    //     return new Promise((resolve) =>
+    //       resolve({
+    //         type: 'color',
+    //         value: '#65C18C',
+    //       })
+    //     );
+    //   },
+    // },
+  ],
 };
 const handleJsonChange = (val: any) => {
   console.log(json.value);
   json.value = val;
   console.log(deepReductionJson(json.value));
 };
+
+// const handleClick = (nodeValue, allowType) => {
+//   nodeValue.type = 'date';
+// };
 </script>
 <style lang="less" scoped>
 .json-warper {

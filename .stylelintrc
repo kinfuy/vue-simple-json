@@ -1,11 +1,12 @@
 {
   "extends": [
     "stylelint-config-standard",
-    "stylelint-config-prettier"
+    "stylelint-config-html/vue",
+    "stylelint-config-prettier",
+    "stylelint-config-recommended-vue",
+    "stylelint-config-recommended-less"
   ],
-  "plugins": [
-    "stylelint-order"
-  ],
+  "customSyntax": "postcss-html",
   "rules": {
     "rule-empty-line-before": null,
     "no-empty-source": null,
@@ -14,12 +15,7 @@
     "selector-combinator-space-after": null,
     "declaration-bang-space-before": null,
     "no-descending-specificity": null,
-    "selector-type-no-unknown": null,
-    "selector-pseudo-class-no-unknown": null,
     "font-family-no-missing-generic-family-keyword": null
   },
-  "ignoreFiles": [
-    "src/styles/iconfont/font/*"
-  ],
   "defaultSeverity": "error"
 }
