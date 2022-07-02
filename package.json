@@ -8,6 +8,7 @@
   "scripts": {
     "serve": "pnpm run -C example serve",
     "docs:build": "pnpm run -C example build",
+    "docs:view": "pnpm run -C example preview",
     "build": "gulp --require sucrase/register/ts --gulpfile build/gulpfile.ts",
     "clear": "rimraf dist",
     "update:version": "sucrase-node build/utils/version.ts",
