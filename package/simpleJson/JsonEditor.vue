@@ -17,7 +17,7 @@
   </SubJsonNode>
 </template>
 <script lang="ts">
-import { defineComponent, provide, ref, toRef, watch } from 'vue';
+import { defineComponent, provide, ref, toRefs, watch } from 'vue';
 import { deepDeleteJson, deepUpdataJson } from './utils';
 import SubJsonNode from './components/SubJsonNode.vue';
 import type { PropType } from 'vue';
@@ -90,9 +90,9 @@ export default defineComponent({
       value: any
     ) => {
       if (!value.root) {
-        await deepUpdataJson(stateData.value, value.id, value.key, value.value);
+        deepUpdataJson(stateData.value, value.id, value.key, value.value);
       }
-      await emit(name, stateData.value.value);
+      emit(name, stateData.value.value);
     };
 
     // 展开折叠
@@ -120,8 +120,8 @@ export default defineComponent({
       name: 'change' | 'extend' | 'delete',
       value: any
     ) => {
-      await deepDeleteJson(stateData.value, value.id);
-      await emit('change', stateData.value.value);
+      deepDeleteJson(stateData.value, value.id);
+      emit('change', stateData.value.value);
       emit('delete', value);
     };
 
@@ -137,12 +137,14 @@ export default defineComponent({
     };
 
     provide('eventTrigger', eventTrigger);
+
+    const { disabled, extendAll, extendLevel, config } = toRefs(props);
     provide('JsonEditorContext', {
       extendCatchKey,
-      disabled: toRef(props, 'disabled'),
-      extendAll: toRef(props, 'extendAll'),
-      extendLevel: toRef(props, 'extendLevel'),
-      jsonConfig: toRef(props, 'config'),
+      disabled,
+      extendAll,
+      extendLevel,
+      jsonConfig: config,
     });
     return {
       stateData,

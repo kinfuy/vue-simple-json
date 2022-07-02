@@ -1,5 +1,11 @@
 <template>
   <div class="json-warper">
+    <div class="color-select">
+      <span v-for="(value, key) in keyCOlor" :key="key" class="color-options">
+        <span>{{ key }}:</span>
+        <input v-model="keyCOlor[key]" type="color" />
+      </span>
+    </div>
     <SimpleJson
       :json="json"
       :disabled="false"
@@ -12,6 +18,7 @@
         <span @click="handleClick(nodeValue, allowType)">切换</span>
       </template> -->
       <template #node-value="{ nodeValue }">
+        <!-- 自定义类型 -->
         <input
           v-if="nodeValue.type === 'color'"
           v-model="nodeValue.value"
@@ -30,19 +37,22 @@
 <script setup lang="tsx">
 import { ref } from 'vue';
 import { deepAnalysisJson, deepReductionJson } from '../package/index';
-import { jsonStr } from './data';
+import { jsonData } from './data';
+import type { Ref } from 'vue';
 import type { JsonEditorConfig } from '../package/index';
 
-const json = ref(deepAnalysisJson(JSON.parse(jsonStr)));
-const config: JsonEditorConfig = {
-  keyColor: {
-    string: '#f90',
-    number: 'red',
-    array: '#71aff1',
-    object: '#19be6b',
-    date: 'red',
-    color: '#603601',
-  },
+const json = ref(deepAnalysisJson(jsonData));
+const keyCOlor = ref({
+  string: '#3490de',
+  number: '#00b8a9',
+  array: '#ffde7d',
+  object: '#f6416c',
+  boolean: '#a82ffc',
+  date: '#3d84a8',
+  color: '#e84545',
+});
+const config: Ref<JsonEditorConfig> = ref({
+  keyColor: keyCOlor.value,
   allowType: [
     {
       type: 'boolean',
@@ -61,12 +71,6 @@ const config: JsonEditorConfig = {
       desc: '数组',
     },
     {
-      type: 'date',
-      desc: '时间',
-      default: '2022-02-23',
-      slot: true,
-    },
-    {
       type: 'object',
       desc: '对象',
     },
@@ -74,6 +78,12 @@ const config: JsonEditorConfig = {
       type: 'color',
       desc: '颜色',
       default: '#94B49F',
+      slot: true,
+    },
+    {
+      type: 'date',
+      desc: '时间',
+      default: '2022-02-23',
       slot: true,
     },
   ],
@@ -93,7 +103,7 @@ const config: JsonEditorConfig = {
     //   },
     // },
   ],
-};
+});
 const handleJsonChange = (val: any) => {
   console.log(json.value);
   json.value = val;
@@ -118,5 +128,11 @@ const handleJsonChange = (val: any) => {
 }
 .input {
   height: 20px;
+}
+.color-select {
+  margin-bottom: 20px;
+  .color-options {
+    margin-right: 10px;
+  }
 }
 </style>

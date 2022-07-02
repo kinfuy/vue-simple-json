@@ -225,7 +225,15 @@ export default defineComponent({
         const extend = extendCatchKey.value.some((x) => {
           return x.id === stateData.value?.id || null;
         });
-        if (val >= props.currectLevel || extendAll.value || extend) {
+        const isCanExtendChildren =
+          stateData.value &&
+          Array.isArray(stateData.value.value) &&
+          stateData.value.value.length > 0;
+        if (
+          (val >= props.currectLevel && isCanExtendChildren) ||
+          extendAll.value ||
+          extend
+        ) {
           isExtend.value = true;
           eventTrigger('extend', {
             isExtend: isExtend.value,

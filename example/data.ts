@@ -1,1 +1,0 @@
-export const jsonStr = `{"err_no":0,"err_msg":"success","data":{"config":{"config_id":"0","start_time":0,"end_time":0,"app_id":0,"locate":0,"name":"","status":0,"ctime":0,"mtime":0},"is_show":false}}`;

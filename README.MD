@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="300px" src="./example/assets/logo.png">
+  <img width="128px" src="./example/assets/logo.png">
 </p>
 
 <p align="center">
@@ -51,17 +51,9 @@ npm install vue-simple-json
 
 ## demo
 
-### 普通 demo
 
-![案例](./template/demo.png)
+![案例](./template/demo.jpg)
 
-### 自定义操作符 demo
-
-![案例](./template/demo.png)
-
-### 自定义节点 demo
-
-![案例](./template/demo.png)
 
 ## 文档
 

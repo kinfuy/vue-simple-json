@@ -1,7 +1,0 @@
-{
-    "name": "vue-simple-json",
-    "version": "1.0.8",
-    "scripts": {
-        "serve": "vite"
-    }
-}
