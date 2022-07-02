@@ -41,14 +41,14 @@ var _sfc_main = vue.defineComponent({
     }
   },
   setup(props) {
-    const stateData = vue.ref(void 0);
+    const stateData = vue.ref(null);
     const {
       extendLevel,
       extendAll,
       extendCatchKey,
       disabled,
       jsonConfig
-    } = vue.inject("JsonEditorContext");
+    } = vue.inject("JsonEditorContext", {});
     vue.watch(() => props.json, (val) => {
       stateData.value = val;
     }, {
@@ -205,8 +205,6 @@ var _sfc_main = vue.defineComponent({
       return rst;
     });
     const handleCustom = (operate) => {
-      console.log("handleCustom");
-      console.log("log=>JsonNode=>348:operate:%o", operate);
       if (stateData.value) {
         const currect = {
           key: stateData.value.key,
@@ -229,9 +227,8 @@ var _sfc_main = vue.defineComponent({
     const valueSlot = vue.computed(() => {
       let isSlot = false;
       allowType.value.forEach((x) => {
-        var _a;
-        if (x.type === ((_a = stateData.value) == null ? void 0 : _a.type)) {
-          isSlot = x.slot;
+        if (stateData.value && x.type === stateData.value.type) {
+          isSlot = x.slot || false;
         }
       });
       if (stateData.value)

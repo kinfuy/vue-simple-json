@@ -8,6 +8,6 @@ export const zip = async () => {
   await createZip({
     fileName: versionFileName,
     enterPath: buildOutpath,
-    outPath: versionPath
+    outPath: versionPath,
   });
 };

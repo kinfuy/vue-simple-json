@@ -7,26 +7,6 @@ var index = require('./utils/index.js');
 var SubJsonNode = require('./components/SubJsonNode.js');
 var pluginVue_exportHelper = require('../_virtual/plugin-vue_export-helper.js');
 
-var __async = (__this, __arguments, generator) => {
-  return new Promise((resolve, reject) => {
-    var fulfilled = (value) => {
-      try {
-        step(generator.next(value));
-      } catch (e) {
-        reject(e);
-      }
-    };
-    var rejected = (value) => {
-      try {
-        step(generator.throw(value));
-      } catch (e) {
-        reject(e);
-      }
-    };
-    var step = (x) => x.done ? resolve(x.value) : Promise.resolve(x.value).then(fulfilled, rejected);
-    step((generator = generator.apply(__this, __arguments)).next());
-  });
-};
 const _sfc_main = vue.defineComponent({
   name: "SimpleJson",
   components: { SubJsonNode: SubJsonNode["default"] },
@@ -51,10 +31,6 @@ const _sfc_main = vue.defineComponent({
       type: Array,
       default: () => []
     },
-    isBlock: {
-      type: Boolean,
-      default: true
-    },
     config: {
       type: Object,
       default: () => {
@@ -78,12 +54,12 @@ const _sfc_main = vue.defineComponent({
       immediate: true,
       deep: true
     });
-    const handleChange = (name, value) => __async(this, null, function* () {
+    const handleChange = async (name, value) => {
       if (!value.root) {
         index.deepUpdataJson(stateData.value, value.id, value.key, value.value);
       }
       emit(name, stateData.value.value);
-    });
+    };
     const handleExtend = (value) => {
       const exist = extendCatchKey.value.some((x) => {
         return value.id === x.id;
@@ -102,11 +78,11 @@ const _sfc_main = vue.defineComponent({
       }
       emit("extend", extendCatchKey.value);
     };
-    const handleAttrDelete = (name, value) => __async(this, null, function* () {
+    const handleAttrDelete = async (name, value) => {
       index.deepDeleteJson(stateData.value, value.id);
       emit("change", stateData.value.value);
       emit("delete", value);
-    });
+    };
     const eventTrigger = (name, value) => {
       if (name === "change")
         handleChange(name, value);

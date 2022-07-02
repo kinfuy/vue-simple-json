@@ -102,7 +102,7 @@
   </div>
 </template>
 <script lang="tsx">
-import { computed, defineComponent, inject, ref, watch } from 'vue';
+import { computed, defineComponent, h, inject, ref, watch } from 'vue';
 import {
   _UUID,
   deepAnalysisJson,
@@ -150,10 +150,10 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const stateData = ref<JsonItem | undefined>(undefined);
+    const stateData = ref<JsonItem | null>(null);
 
     const { extendLevel, extendAll, extendCatchKey, disabled, jsonConfig } =
-      inject('JsonEditorContext') as JsonEditorContext;
+      inject<JsonEditorContext>('JsonEditorContext', {} as JsonEditorContext);
 
     watch(
       () => props.json,
@@ -254,7 +254,7 @@ export default defineComponent({
       });
     };
 
-    const handleSwitch = (item?: JsonItem) => {
+    const handleSwitch = (item: JsonItem | null) => {
       if (!item) return;
       if (item.type === 'array' || item.type === 'object') {
         item.value = [];
@@ -350,8 +350,6 @@ export default defineComponent({
     // 用户自定义操作
     // 如果用户返回值，将该值改为用户操作返回值
     const handleCustom = (operate: OperationItem) => {
-      console.log('handleCustom');
-      console.log('log=>JsonNode=>348:operate:%o', operate);
       if (stateData.value) {
         const currect = {
           key: stateData.value.key,
@@ -377,8 +375,8 @@ export default defineComponent({
     const valueSlot = computed(() => {
       let isSlot = false;
       allowType.value.forEach((x) => {
-        if (x.type === stateData.value?.type) {
-          isSlot = x.slot;
+        if (stateData.value && x.type === stateData.value.type) {
+          isSlot = x.slot || false;
         }
       });
       if (stateData.value) return isSlot && !stateData.value.root;

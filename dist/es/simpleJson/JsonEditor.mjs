@@ -1,28 +1,8 @@
 import { defineComponent, ref, watch, provide, toRefs, resolveComponent, openBlock, createBlock, withCtx, renderSlot } from 'vue';
-import { deepDeleteJson, deepUpdataJson } from './utils/index.mjs';
+import { deepUpdataJson, deepDeleteJson } from './utils/index.mjs';
 import SubJsonNode from './components/SubJsonNode.mjs';
 import _export_sfc from '../_virtual/plugin-vue_export-helper.mjs';
 
-var __async = (__this, __arguments, generator) => {
-  return new Promise((resolve, reject) => {
-    var fulfilled = (value) => {
-      try {
-        step(generator.next(value));
-      } catch (e) {
-        reject(e);
-      }
-    };
-    var rejected = (value) => {
-      try {
-        step(generator.throw(value));
-      } catch (e) {
-        reject(e);
-      }
-    };
-    var step = (x) => x.done ? resolve(x.value) : Promise.resolve(x.value).then(fulfilled, rejected);
-    step((generator = generator.apply(__this, __arguments)).next());
-  });
-};
 const _sfc_main = defineComponent({
   name: "SimpleJson",
   components: { SubJsonNode },
@@ -47,10 +27,6 @@ const _sfc_main = defineComponent({
       type: Array,
       default: () => []
     },
-    isBlock: {
-      type: Boolean,
-      default: true
-    },
     config: {
       type: Object,
       default: () => {
@@ -74,12 +50,12 @@ const _sfc_main = defineComponent({
       immediate: true,
       deep: true
     });
-    const handleChange = (name, value) => __async(this, null, function* () {
+    const handleChange = async (name, value) => {
       if (!value.root) {
         deepUpdataJson(stateData.value, value.id, value.key, value.value);
       }
       emit(name, stateData.value.value);
-    });
+    };
     const handleExtend = (value) => {
       const exist = extendCatchKey.value.some((x) => {
         return value.id === x.id;
@@ -98,11 +74,11 @@ const _sfc_main = defineComponent({
       }
       emit("extend", extendCatchKey.value);
     };
-    const handleAttrDelete = (name, value) => __async(this, null, function* () {
+    const handleAttrDelete = async (name, value) => {
       deepDeleteJson(stateData.value, value.id);
       emit("change", stateData.value.value);
       emit("delete", value);
-    });
+    };
     const eventTrigger = (name, value) => {
       if (name === "change")
         handleChange(name, value);

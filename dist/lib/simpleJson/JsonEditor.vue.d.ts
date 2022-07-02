@@ -21,10 +21,6 @@ declare const _default: import("vue").DefineComponent<{
         type: PropType<SpeciallyKeyItem[]>;
         default: () => never[];
     };
-    isBlock: {
-        type: BooleanConstructor;
-        default: boolean;
-    };
     config: {
         type: PropType<JsonEditorConfig>;
         default: () => void;
@@ -65,10 +61,6 @@ declare const _default: import("vue").DefineComponent<{
         type: PropType<SpeciallyKeyItem[]>;
         default: () => never[];
     };
-    isBlock: {
-        type: BooleanConstructor;
-        default: boolean;
-    };
     config: {
         type: PropType<JsonEditorConfig>;
         default: () => void;
@@ -84,7 +76,6 @@ declare const _default: import("vue").DefineComponent<{
     extendAll: boolean;
     extendLevel: number;
     speciallyKey: SpeciallyKeyItem[];
-    isBlock: boolean;
     config: JsonEditorConfig;
 }>;
 export default _default;

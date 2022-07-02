@@ -201,7 +201,7 @@ export const deepUpdataJson = (
 export const mergeArray = (
   target: Array<any>,
   scoure: Array<AllowTypeItem>
-) => {
+): AllowTypeItem[] => {
   const rst = target.map((x) => {
     const configType = typeof x === 'string';
     return {

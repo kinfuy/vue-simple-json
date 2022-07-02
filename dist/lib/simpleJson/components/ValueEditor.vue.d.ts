@@ -20,14 +20,17 @@ declare const _default: import("vue").DefineComponent<{
         toLocaleString: {
             (): string;
             (locales?: string | string[] | undefined, options?: Intl.DateTimeFormatOptions | undefined): string;
+            (locales?: Intl.LocalesArgument, options?: Intl.DateTimeFormatOptions | undefined): string;
         };
         toLocaleDateString: {
             (): string;
             (locales?: string | string[] | undefined, options?: Intl.DateTimeFormatOptions | undefined): string;
+            (locales?: Intl.LocalesArgument, options?: Intl.DateTimeFormatOptions | undefined): string;
         };
         toLocaleTimeString: {
             (): string;
             (locales?: string | string[] | undefined, options?: Intl.DateTimeFormatOptions | undefined): string;
+            (locales?: Intl.LocalesArgument, options?: Intl.DateTimeFormatOptions | undefined): string;
         };
         valueOf: () => number;
         getTime: () => number;

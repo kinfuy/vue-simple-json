@@ -1,6 +1,6 @@
 {
   "name": "vue-simple-json",
-  "version": "1.0.8",
+  "version": "1.1.0",
   "description": "Minimalist JSON editor",
   "author": "alqmc",
   "license": "MIT",
@@ -23,12 +23,14 @@
   },
   "devDependencies": {
     "@alqmc/build-utils": "^0.0.5",
-    "@alqmc/build-vue": "^0.0.5",
+    "@alqmc/build-vue": "0.0.6",
     "@alqmc/eslint-config": "^0.0.4",
     "@commitlint/cli": "^9.1.2",
     "@commitlint/config-conventional": "^9.1.2",
     "@types/fs-extra": "^9.0.13",
     "@types/gulp": "^4.0.9",
+    "@vitejs/plugin-vue": "^2.3.3",
+    "@vue/tsconfig": "^0.1.3",
     "conventional-changelog-cli": "^2.2.2",
     "conventional-changelog-custom-config": "^0.3.1",
     "cz-conventional-changelog": "^3.3.0",
@@ -50,6 +52,7 @@
     "stylelint-config-standard": "^26.0.0",
     "sucrase": "^3.22.0",
     "typescript": "^4.7.4",
+    "vite": "^2.9.13",
     "vue": "^3.2.37"
   },
   "config": {

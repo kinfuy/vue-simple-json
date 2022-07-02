@@ -6,10 +6,5 @@ export declare const deepReductionJson: (json: Array<JsonItem>) => Record<string
 export declare const deepDeleteJson: (json: JsonItem, tempId: string) => void;
 export declare const updataArrIndex: (json: JsonItem) => void;
 export declare const deepUpdataJson: (json: JsonItem, tempId: string, key: string, value: any) => void;
-export declare const mergeArray: (target: Array<any>, scoure: Array<AllowTypeItem>) => {
-    type: any;
-    desc: any;
-    default: any;
-    slot: any;
-}[];
+export declare const mergeArray: (target: Array<any>, scoure: Array<AllowTypeItem>) => AllowTypeItem[];
 export declare const deepCopy: (data: any) => any;

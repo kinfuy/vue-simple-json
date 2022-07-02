@@ -52,10 +52,6 @@ export default defineComponent({
       type: Array as PropType<Array<SpeciallyKeyItem>>,
       default: () => [],
     },
-    isBlock: {
-      type: Boolean,
-      default: true,
-    },
     config: {
       type: Object as PropType<JsonEditorConfig>,
       default: () => {},

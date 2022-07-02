@@ -37,14 +37,14 @@ var _sfc_main = defineComponent({
     }
   },
   setup(props) {
-    const stateData = ref(void 0);
+    const stateData = ref(null);
     const {
       extendLevel,
       extendAll,
       extendCatchKey,
       disabled,
       jsonConfig
-    } = inject("JsonEditorContext");
+    } = inject("JsonEditorContext", {});
     watch(() => props.json, (val) => {
       stateData.value = val;
     }, {
@@ -201,8 +201,6 @@ var _sfc_main = defineComponent({
       return rst;
     });
     const handleCustom = (operate) => {
-      console.log("handleCustom");
-      console.log("log=>JsonNode=>348:operate:%o", operate);
       if (stateData.value) {
         const currect = {
           key: stateData.value.key,
@@ -225,9 +223,8 @@ var _sfc_main = defineComponent({
     const valueSlot = computed(() => {
       let isSlot = false;
       allowType.value.forEach((x) => {
-        var _a;
-        if (x.type === ((_a = stateData.value) == null ? void 0 : _a.type)) {
-          isSlot = x.slot;
+        if (stateData.value && x.type === stateData.value.type) {
+          isSlot = x.slot || false;
         }
       });
       if (stateData.value)

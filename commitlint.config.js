@@ -13,7 +13,8 @@ module.exports = {
       'refactor',
       'revert',
       'style',
-      'test'
+      'test',
+      "release"
     ]],
     'type-case': [0],
     'type-empty': [0],
