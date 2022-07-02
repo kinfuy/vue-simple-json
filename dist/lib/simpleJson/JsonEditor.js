@@ -51,6 +51,10 @@ const _sfc_main = vue.defineComponent({
       type: Array,
       default: () => []
     },
+    isBlock: {
+      type: Boolean,
+      default: true
+    },
     config: {
       type: Object,
       default: () => {
@@ -76,9 +80,9 @@ const _sfc_main = vue.defineComponent({
     });
     const handleChange = (name, value) => __async(this, null, function* () {
       if (!value.root) {
-        yield index.deepUpdataJson(stateData.value, value.id, value.key, value.value);
+        index.deepUpdataJson(stateData.value, value.id, value.key, value.value);
       }
-      yield emit(name, stateData.value.value);
+      emit(name, stateData.value.value);
     });
     const handleExtend = (value) => {
       const exist = extendCatchKey.value.some((x) => {
@@ -99,8 +103,8 @@ const _sfc_main = vue.defineComponent({
       emit("extend", extendCatchKey.value);
     };
     const handleAttrDelete = (name, value) => __async(this, null, function* () {
-      yield index.deepDeleteJson(stateData.value, value.id);
-      yield emit("change", stateData.value.value);
+      index.deepDeleteJson(stateData.value, value.id);
+      emit("change", stateData.value.value);
       emit("delete", value);
     });
     const eventTrigger = (name, value) => {
@@ -114,12 +118,13 @@ const _sfc_main = vue.defineComponent({
         emit(name, value);
     };
     vue.provide("eventTrigger", eventTrigger);
+    const { disabled, extendAll, extendLevel, config } = vue.toRefs(props);
     vue.provide("JsonEditorContext", {
       extendCatchKey,
-      disabled: vue.toRef(props, "disabled"),
-      extendAll: vue.toRef(props, "extendAll"),
-      extendLevel: vue.toRef(props, "extendLevel"),
-      jsonConfig: vue.toRef(props, "config")
+      disabled,
+      extendAll,
+      extendLevel,
+      jsonConfig: config
     });
     return {
       stateData,

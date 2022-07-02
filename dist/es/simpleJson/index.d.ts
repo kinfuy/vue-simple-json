@@ -8,6 +8,7 @@ export declare const SimpleJson: {
             extendAll: boolean;
             extendLevel: number;
             speciallyKey: import("..").SpeciallyKeyItem[];
+            isBlock: boolean;
             config: import("..").JsonEditorConfig;
         }> & Omit<Readonly<import("vue").ExtractPropTypes<{
             json: {
@@ -30,6 +31,10 @@ export declare const SimpleJson: {
                 type: import("vue").PropType<import("..").SpeciallyKeyItem[]>;
                 default: () => never[];
             };
+            isBlock: {
+                type: BooleanConstructor;
+                default: boolean;
+            };
             config: {
                 type: import("vue").PropType<import("..").JsonEditorConfig>;
                 default: () => void;
@@ -40,7 +45,7 @@ export declare const SimpleJson: {
             onExtend?: ((...args: any[]) => any) | undefined;
             onDelete?: ((...args: any[]) => any) | undefined;
             "onType-switch"?: ((...args: any[]) => any) | undefined;
-        } & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, "disabled" | "extendAll" | "extendLevel" | "speciallyKey" | "config">;
+        } & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, "disabled" | "extendAll" | "extendLevel" | "speciallyKey" | "isBlock" | "config">;
         $attrs: {
             [x: string]: unknown;
         };
@@ -75,6 +80,10 @@ export declare const SimpleJson: {
                 type: import("vue").PropType<import("..").SpeciallyKeyItem[]>;
                 default: () => never[];
             };
+            isBlock: {
+                type: BooleanConstructor;
+                default: boolean;
+            };
             config: {
                 type: import("vue").PropType<import("..").JsonEditorConfig>;
                 default: () => void;
@@ -105,6 +114,7 @@ export declare const SimpleJson: {
             extendAll: boolean;
             extendLevel: number;
             speciallyKey: import("..").SpeciallyKeyItem[];
+            isBlock: boolean;
             config: import("..").JsonEditorConfig;
         }> & {
             beforeCreate?: ((() => void) | (() => void)[]) | undefined;
@@ -146,6 +156,10 @@ export declare const SimpleJson: {
         speciallyKey: {
             type: import("vue").PropType<import("..").SpeciallyKeyItem[]>;
             default: () => never[];
+        };
+        isBlock: {
+            type: BooleanConstructor;
+            default: boolean;
         };
         config: {
             type: import("vue").PropType<import("..").JsonEditorConfig>;
@@ -197,6 +211,10 @@ export declare const SimpleJson: {
         type: import("vue").PropType<import("..").SpeciallyKeyItem[]>;
         default: () => never[];
     };
+    isBlock: {
+        type: BooleanConstructor;
+        default: boolean;
+    };
     config: {
         type: import("vue").PropType<import("..").JsonEditorConfig>;
         default: () => void;
@@ -227,6 +245,7 @@ export declare const SimpleJson: {
     extendAll: boolean;
     extendLevel: number;
     speciallyKey: import("..").SpeciallyKeyItem[];
+    isBlock: boolean;
     config: import("..").JsonEditorConfig;
 }> & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps & Plugin & Record<string, any>;
 export default SimpleJson;

@@ -1,4 +1,4 @@
-import { PropType, VNodeArrayChildren } from 'vue';
+import type { PropType, VNodeArrayChildren } from 'vue';
 export interface RenderProps {
     render: () => VNodeArrayChildren;
 }

@@ -1,4 +1,4 @@
-import { defineComponent, ref, watch, provide, toRef, resolveComponent, openBlock, createBlock, withCtx, renderSlot } from 'vue';
+import { defineComponent, ref, watch, provide, toRefs, resolveComponent, openBlock, createBlock, withCtx, renderSlot } from 'vue';
 import { deepDeleteJson, deepUpdataJson } from './utils/index.mjs';
 import SubJsonNode from './components/SubJsonNode.mjs';
 import _export_sfc from '../_virtual/plugin-vue_export-helper.mjs';
@@ -47,6 +47,10 @@ const _sfc_main = defineComponent({
       type: Array,
       default: () => []
     },
+    isBlock: {
+      type: Boolean,
+      default: true
+    },
     config: {
       type: Object,
       default: () => {
@@ -72,9 +76,9 @@ const _sfc_main = defineComponent({
     });
     const handleChange = (name, value) => __async(this, null, function* () {
       if (!value.root) {
-        yield deepUpdataJson(stateData.value, value.id, value.key, value.value);
+        deepUpdataJson(stateData.value, value.id, value.key, value.value);
       }
-      yield emit(name, stateData.value.value);
+      emit(name, stateData.value.value);
     });
     const handleExtend = (value) => {
       const exist = extendCatchKey.value.some((x) => {
@@ -95,8 +99,8 @@ const _sfc_main = defineComponent({
       emit("extend", extendCatchKey.value);
     };
     const handleAttrDelete = (name, value) => __async(this, null, function* () {
-      yield deepDeleteJson(stateData.value, value.id);
-      yield emit("change", stateData.value.value);
+      deepDeleteJson(stateData.value, value.id);
+      emit("change", stateData.value.value);
       emit("delete", value);
     });
     const eventTrigger = (name, value) => {
@@ -110,12 +114,13 @@ const _sfc_main = defineComponent({
         emit(name, value);
     };
     provide("eventTrigger", eventTrigger);
+    const { disabled, extendAll, extendLevel, config } = toRefs(props);
     provide("JsonEditorContext", {
       extendCatchKey,
-      disabled: toRef(props, "disabled"),
-      extendAll: toRef(props, "extendAll"),
-      extendLevel: toRef(props, "extendLevel"),
-      jsonConfig: toRef(props, "config")
+      disabled,
+      extendAll,
+      extendLevel,
+      jsonConfig: config
     });
     return {
       stateData,

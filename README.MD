@@ -15,11 +15,11 @@
   <br>
 </p>
 
-<p align="center">极简的 jsonEditor 插件</p>
+<p align="center">vue-simple-json</p>
+
+> 极简的 jsonEditor 插件
 
 ## 安装
-
-> 强烈推荐使用pnpm
 
 ```shell
 
@@ -31,6 +31,11 @@ yarn add vue-simple-json
 npm install vue-simple-json
 
 ```
+## 示例
+
+### 预览地址：[vue-simple-json](https://alqmc.github.io/vue-simple-json/)
+
+![案例](./template/demo.jpg)
 
 ## 使用
 
@@ -49,10 +54,7 @@ npm install vue-simple-json
 * 展开层级
 * 自定义操作
 
-## [demo](https://alqmc.github.io/vue-simple-json/)
 
-
-![案例](./template/demo.jpg)
 
 
 ## 文档
@@ -81,7 +83,7 @@ npm install vue-simple-json
 
 | 参数       | 说明        | 类型        | 默认值(示例)                                              |
 | ---------- | ----------- | ----------- | --------------------------------------------------------- |
-| key        | 唯一标识    | string      | -                                                         |
+| key        | 唯一标识,默认添加delete，可覆盖重写    | string      | -                                                         |
 | title      | tooltip     | string      | 原生 title                                                |
 | className  | 容器 class  | string      | -                                                         |
 | render     | render 函数 | Function    | 见 vue 渲染函数                                           |
@@ -99,3 +101,8 @@ npm install vue-simple-json
 | ----------- | ---------------------------------------------- |
 | type-switch | 数据类型切换插槽                               |
 | node-value  | 当前节点插槽（自定义类型，需要自定义插槽渲染） |
+
+
+### License
+
+MIT License © 2022 [阿乐去买菜（alqmc）](https://github.com/alqmc)

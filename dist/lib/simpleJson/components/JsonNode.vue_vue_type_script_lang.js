@@ -100,7 +100,8 @@ var _sfc_main = vue.defineComponent({
         var _a2;
         return x.id === ((_a2 = stateData.value) == null ? void 0 : _a2.id) || null;
       });
-      if (val >= props.currectLevel || extendAll.value || extend) {
+      const isCanExtendChildren = stateData.value && Array.isArray(stateData.value.value) && stateData.value.value.length > 0;
+      if (val >= props.currectLevel && isCanExtendChildren || extendAll.value || extend) {
         isExtend.value = true;
         eventTrigger("extend", {
           isExtend: isExtend.value,

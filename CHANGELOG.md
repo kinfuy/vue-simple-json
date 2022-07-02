@@ -1,66 +1,100 @@
-## [1.0.7](https://gitee.com/Y_onghu/simple-json/compare/v1.0.3...v1.0.7) (2022-04-22)
+## [1.0.8](/compare/v1.0.7...v1.0.8) (2022-07-02)
+
+
+### ♻ Code Refactoring | 代码重构
+
+* 重构部分代码，优化导出 f0d6b12
 
 
 ### ✨ Features | 新功能
 
-* 打包重构 ([252b9bc](https://gitee.com/Y_onghu/simple-json/commit/252b9bc))
-* githup action ([ced0281](https://gitee.com/Y_onghu/simple-json/commit/ced0281))
-* githup issue ([3c4d614](https://gitee.com/Y_onghu/simple-json/commit/3c4d614))
+* docs 8c3e14a
 
 
 ### 🐛 Bug Fixes | Bug 修复
 
-* detail ([bb2d3e5](https://gitee.com/Y_onghu/simple-json/commit/bb2d3e5))
-* detail ([62a2783](https://gitee.com/Y_onghu/simple-json/commit/62a2783))
-* detail ([a5a8fd0](https://gitee.com/Y_onghu/simple-json/commit/a5a8fd0))
-* detail ([86468a2](https://gitee.com/Y_onghu/simple-json/commit/86468a2))
+* 修复展开层级，导致不可编辑 01b75c5
+* detail 2432c81
+* detail 5c4e744
+* detail b95ab53
+* detail fa68c51
+* detail da6dd9e
+* detail 0c55061
+* dev 21a3719
+* docs base 23c9ff2
+* package 3e9f669
+* pnpm 9beebf6
+* publish b79b5cc
+* sh 1913b02
+* verison 63159dc
+* verison 9f89647
 
 
-### 📝 Documentation | 文档
 
-* update readme ([c28432f](https://gitee.com/Y_onghu/simple-json/commit/c28432f))
-* update readme ([864cdbb](https://gitee.com/Y_onghu/simple-json/commit/864cdbb))
-
-
-
-## [1.0.3](https://gitee.com/Y_onghu/simple-json/compare/v1.0.0...v1.0.3) (2022-02-28)
+## [1.0.7](/compare/v1.0.3...v1.0.7) (2022-04-22)
 
 
 ### ✨ Features | 新功能
 
-* demo build ([a209370](https://gitee.com/Y_onghu/simple-json/commit/a209370))
-* LICENSE. ([2fbdd6b](https://gitee.com/Y_onghu/simple-json/commit/2fbdd6b))
-* yarn to pnpm ([feba598](https://gitee.com/Y_onghu/simple-json/commit/feba598))
+* 打包重构 252b9bc
+* githup action ced0281
+* githup issue 3c4d614
 
 
 ### 🐛 Bug Fixes | Bug 修复
 
-* 清理文件 ([1252b68](https://gitee.com/Y_onghu/simple-json/commit/1252b68))
-* config ([2b522c3](https://gitee.com/Y_onghu/simple-json/commit/2b522c3))
-* config ([419d7f0](https://gitee.com/Y_onghu/simple-json/commit/419d7f0))
-* detail ([48c21bd](https://gitee.com/Y_onghu/simple-json/commit/48c21bd))
-* detail ([9c8f022](https://gitee.com/Y_onghu/simple-json/commit/9c8f022))
-* readme ([5d541c0](https://gitee.com/Y_onghu/simple-json/commit/5d541c0))
+* detail d1105e7
+* detail bb2d3e5
+* detail 62a2783
+* detail a5a8fd0
+* detail 86468a2
 
 
 ### 📝 Documentation | 文档
 
-* update readme ([eb8acf0](https://gitee.com/Y_onghu/simple-json/commit/eb8acf0))
+* update readme c28432f
+* update readme 864cdbb
 
 
 
-# [1.0.0](https://gitee.com/Y_onghu/simple-json/compare/10ae87f...v1.0.0) (2022-02-25)
+## [1.0.3](/compare/v1.0.0...v1.0.3) (2022-02-28)
 
 
 ### ✨ Features | 新功能
 
-* 初始化 ([10ae87f](https://gitee.com/Y_onghu/simple-json/commit/10ae87f))
-* bin ([6830958](https://gitee.com/Y_onghu/simple-json/commit/6830958))
+* demo build a209370
+* LICENSE. 2fbdd6b
+* yarn to pnpm feba598
+
+
+### 🐛 Bug Fixes | Bug 修复
+
+* 清理文件 1252b68
+* config 2b522c3
+* config 419d7f0
+* detail 48c21bd
+* detail 9c8f022
+* readme 5d541c0
+
+
+### 📝 Documentation | 文档
+
+* update readme eb8acf0
+
+
+
+# [1.0.0](/compare/10ae87f...v1.0.0) (2022-02-25)
+
+
+### ✨ Features | 新功能
+
+* 初始化 10ae87f
+* bin 6830958
 
 
 ### 👷‍ Build System | 构建
 
-* v1.0.0 ([ae4a147](https://gitee.com/Y_onghu/simple-json/commit/ae4a147))
+* v1.0.0 ae4a147
 
 
 
