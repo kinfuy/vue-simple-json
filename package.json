@@ -6,8 +6,8 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "serve": "pnpm run -C docs serve",
-    "docs:build": "pnpm run -C docs build",
+    "serve": "pnpm run -C example serve",
+    "docs:build": "pnpm run -C example build",
     "build": "gulp --require sucrase/register/ts --gulpfile build/gulpfile.ts",
     "clear": "rimraf dist",
     "update:version": "sucrase-node build/utils/version.ts",
@@ -16,8 +16,8 @@
     "changelog": "conventional-changelog -p custom-config  -i CHANGELOG.md  -s -r 0 -n ./changelog.config.js",
     "push": "git push gitee next && git push github next",
     "lint": "pnpm run lint:js&&pnpm run lint:style",
-    "lint:js": "eslint -c ./.eslintrc.js --fix --ext .jsx,.js,.vue,.ts \"{docs,packages}/**/*.{jsx,js,vue}\"",
-    "lint:style": "stylelint \"{docs,packages}/**/*.{vue,less}\" --config ./.stylelintrc --fix",
+    "lint:js": "eslint -c ./.eslintrc.js --fix --ext .jsx,.js,.vue,.ts \"{example,packages}/**/*.{jsx,js,vue}\"",
+    "lint:style": "stylelint \"{example,packages}/**/*.{vue,less}\" --config ./.stylelintrc --fix",
     "prepare": "husky install"
   },
   "devDependencies": {
