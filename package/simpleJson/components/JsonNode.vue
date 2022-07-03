@@ -102,7 +102,7 @@
   </div>
 </template>
 <script lang="tsx">
-import { computed, defineComponent, h, inject, ref, watch } from 'vue';
+import { computed, defineComponent, inject, ref, watch } from 'vue';
 import {
   _UUID,
   deepAnalysisJson,
@@ -187,11 +187,9 @@ export default defineComponent({
       title: '删除',
       clickEvent: handleAttrDelete,
       render: () => (
-        <>
-          <IconSvg color="red" size={16}>
-            <IconDelete />
-          </IconSvg>
-        </>
+        <IconSvg color="red" size={16}>
+          <IconDelete />
+        </IconSvg>
       ),
     };
 

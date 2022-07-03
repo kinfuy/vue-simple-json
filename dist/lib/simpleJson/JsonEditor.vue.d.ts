@@ -73,8 +73,8 @@ declare const _default: import("vue").DefineComponent<{
     "onType-switch"?: ((...args: any[]) => any) | undefined;
 }, {
     disabled: boolean;
-    extendAll: boolean;
     extendLevel: number;
+    extendAll: boolean;
     speciallyKey: SpeciallyKeyItem[];
     config: JsonEditorConfig;
 }>;

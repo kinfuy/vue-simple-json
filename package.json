@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@alqmc/build-utils": "^0.0.5",
-    "@alqmc/build-vue": "0.0.6",
+    "@alqmc/build-vue": "0.0.7",
     "@alqmc/eslint-config": "^0.0.4",
     "@commitlint/cli": "^9.1.2",
     "@commitlint/config-conventional": "^9.1.2",

@@ -73,12 +73,12 @@ var _sfc_main = vue.defineComponent({
       key: "delete",
       title: "\u5220\u9664",
       clickEvent: handleAttrDelete,
-      render: () => vue.createVNode(vue.Fragment, null, [vue.createVNode(IconSvg["default"], {
+      render: () => vue.createVNode(IconSvg["default"], {
         "color": "red",
         "size": 16
       }, {
         default: () => [vue.createVNode(iconDelete["default"], null, null)]
-      })])
+      })
     };
     const customAppendOperate = vue.computed(() => {
       if (jsonConfig.value && jsonConfig.value.appendOperate) {

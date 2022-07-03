@@ -5,8 +5,8 @@ export declare const SimpleJson: {
         $data: {};
         $props: Partial<{
             disabled: boolean;
-            extendAll: boolean;
             extendLevel: number;
+            extendAll: boolean;
             speciallyKey: import("..").SpeciallyKeyItem[];
             config: import("..").JsonEditorConfig;
         }> & Omit<Readonly<import("vue").ExtractPropTypes<{
@@ -40,7 +40,7 @@ export declare const SimpleJson: {
             onExtend?: ((...args: any[]) => any) | undefined;
             onDelete?: ((...args: any[]) => any) | undefined;
             "onType-switch"?: ((...args: any[]) => any) | undefined;
-        } & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, "disabled" | "extendAll" | "extendLevel" | "speciallyKey" | "config">;
+        } & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, "disabled" | "extendLevel" | "extendAll" | "speciallyKey" | "config">;
         $attrs: {
             [x: string]: unknown;
         };
@@ -102,8 +102,8 @@ export declare const SimpleJson: {
             }[]>;
         }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("update:value" | "change" | "extend" | "delete" | "type-switch")[], string, {
             disabled: boolean;
-            extendAll: boolean;
             extendLevel: number;
+            extendAll: boolean;
             speciallyKey: import("..").SpeciallyKeyItem[];
             config: import("..").JsonEditorConfig;
         }> & {
@@ -224,8 +224,8 @@ export declare const SimpleJson: {
     }[]>;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("update:value" | "change" | "extend" | "delete" | "type-switch")[], "update:value" | "change" | "extend" | "delete" | "type-switch", {
     disabled: boolean;
-    extendAll: boolean;
     extendLevel: number;
+    extendAll: boolean;
     speciallyKey: import("..").SpeciallyKeyItem[];
     config: import("..").JsonEditorConfig;
 }> & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps & Plugin & Record<string, any>;

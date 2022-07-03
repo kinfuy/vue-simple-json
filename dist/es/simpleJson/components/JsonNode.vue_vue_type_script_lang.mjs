@@ -1,4 +1,4 @@
-import { defineComponent, ref, inject, watch, computed, createVNode, Fragment } from 'vue';
+import { defineComponent, ref, inject, watch, computed, createVNode } from 'vue';
 import { mergeArray, deepCopy, _UUID, updataArrIndex, deepReductionJson, deepAnalysisJson } from '../utils/index.mjs';
 import ValueEditor from './ValueEditor.mjs';
 import IconSvg from './Icon/IconSvg.mjs';
@@ -69,12 +69,12 @@ var _sfc_main = defineComponent({
       key: "delete",
       title: "\u5220\u9664",
       clickEvent: handleAttrDelete,
-      render: () => createVNode(Fragment, null, [createVNode(IconSvg, {
+      render: () => createVNode(IconSvg, {
         "color": "red",
         "size": 16
       }, {
         default: () => [createVNode(IconDelete, null, null)]
-      })])
+      })
     };
     const customAppendOperate = computed(() => {
       if (jsonConfig.value && jsonConfig.value.appendOperate) {
