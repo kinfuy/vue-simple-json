@@ -1,8 +1,17 @@
+:root{
+  --line-height-deafult:24px;
+  --padding-left-default: 40px;
+}
+
+@line-height-deafult:var(--line-height-deafult);
+@padding-left-default:var(--padding-left-default);
+
 .json-node {
   min-height: 30px;
 
   & .json-node {
-    padding-left: 40px;
+    padding-left: @padding-left-default;
+    width: 100%;
   }
 
   .json-node-key {
@@ -11,10 +20,13 @@
     font-weight: 600;
     color: rgb(23, 154, 241);
     text-align: left;
+    line-height: @line-height-deafult;
     min-width: 20px;
   }
 
   .json-node-value {
+    display: inline-block;
+    line-height: @line-height-deafult;
     .root-brackets{
       margin-left: 14px;
     }
@@ -54,7 +66,7 @@
     position: absolute;
     right: 0;
     left: 0;
-    height: 24px;
+    height: @line-height-deafult;
     transition: all 0.3s;
     content: '';
     background-color: rgb(219, 235, 252);

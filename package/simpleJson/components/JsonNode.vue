@@ -102,7 +102,7 @@
   </div>
 </template>
 <script lang="tsx">
-import { computed, defineComponent, h, inject, ref, watch } from 'vue';
+import { computed, defineComponent, inject, ref, watch } from 'vue';
 import {
   _UUID,
   deepAnalysisJson,
@@ -281,7 +281,9 @@ export default defineComponent({
       hoverNodeId.value = '';
     };
     const isHover = computed(() => {
-      return hoverNodeId.value === stateData.value?.id;
+      return (
+        hoverNodeId.value === stateData.value?.id && jsonConfig.value.showHover
+      );
     });
 
     // 修改json

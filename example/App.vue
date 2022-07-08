@@ -50,6 +50,7 @@ const keyCOlor = ref({
   boolean: '#a82ffc',
   date: '#3d84a8',
   color: '#e84545',
+  custom: 'red',
 });
 const config: Ref<JsonEditorConfig> = ref({
   keyColor: keyCOlor.value,
@@ -76,17 +77,18 @@ const config: Ref<JsonEditorConfig> = ref({
     },
     {
       type: 'color',
-      desc: '颜色',
+      desc: '自定义颜色',
       default: '#94B49F',
       slot: true,
     },
     {
       type: 'date',
-      desc: '时间',
+      desc: '自定义时间',
       default: '2022-02-23',
       slot: true,
     },
   ],
+  showHover: true,
   appendOperate: [
     // {
     //   key: 'custom',
