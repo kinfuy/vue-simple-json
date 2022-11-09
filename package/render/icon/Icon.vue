@@ -14,9 +14,8 @@
 <script lang="ts">
 import { computed, defineComponent } from 'vue';
 import { iconProps } from './icon.type';
-
 export default defineComponent({
-  name: 'IconSvg',
+  name: 'Icon',
   props: iconProps,
   setup(props) {
     const rotateStyle = computed(() => {
@@ -27,7 +26,6 @@ export default defineComponent({
       }
       return {};
     });
-
     const sizeStyle = computed(() => {
       if (props.size) {
         return {
@@ -36,7 +34,6 @@ export default defineComponent({
       }
       return {};
     });
-
     const colorStyle = computed(() => {
       if (props.color) {
         return {
@@ -45,7 +42,6 @@ export default defineComponent({
       }
       return {};
     });
-
     return {
       rotateStyle,
       sizeStyle,

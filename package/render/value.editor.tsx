@@ -1,32 +1,13 @@
-<template>
-  <div
-    v-if="!isRefresh"
-    class="value-editor"
-    spellcheck="false"
-    @click="handleClick"
-  >
-    <span
-      ref="valueEditorRef"
-      :class="['value-editor-text', { 'value-editor-input': isEdit }]"
-      @blur="handleBlur"
-      @input="handleInput"
-      @keydown.enter="handleEnter"
-    >
-      <template v-if="type === 'number' || type === 'boolean'">
-        {{ stateValue }}
-      </template>
-      <template v-else-if="type === 'string'">
-        {{ `"${stateValue}"` }}
-      </template>
-    </span>
-  </div>
-</template>
-<script lang="ts">
-import { defineComponent, nextTick, ref, watch } from 'vue';
+import { type PropType, defineComponent, nextTick, ref, watch } from 'vue';
+
 export default defineComponent({
   name: 'ValueEditor',
   props: {
     type: {
+      type: String as PropType<'key' | 'value'>,
+      default: 'value',
+    },
+    valueType: {
       type: String,
       default: 'string',
     },
@@ -36,15 +17,14 @@ export default defineComponent({
     },
     disabled: {
       type: Boolean,
-      default: true,
+      default: false,
     },
   },
   emits: ['update:value', 'change', 'focus', 'blur'],
   setup(props, { emit }) {
-    const valueEditorRef = ref<HTMLInputElement | null>(null);
+    const ValueEditorRef = ref();
     const stateValue = ref<string | number | boolean | Date>('');
 
-    const isRefresh = ref(false);
     const isEdit = ref(false);
     watch(
       () => props.value,
@@ -55,12 +35,16 @@ export default defineComponent({
         immediate: true,
       }
     );
+    const mountedRef = (el: any) => {
+      ValueEditorRef.value = el;
+    };
+
     const handleClick = () => {
       if (!props.disabled) {
         isEdit.value = true;
         nextTick(() => {
-          if (valueEditorRef.value) {
-            valueEditorRef.value.focus();
+          if (ValueEditorRef.value) {
+            ValueEditorRef.value.focus();
             emit('focus');
           }
         });
@@ -73,22 +57,18 @@ export default defineComponent({
     const edited = ref(false);
     const handleBlur = () => {
       isEdit.value = false;
-      if (valueEditorRef.value && edited.value) {
-        let value: any = valueEditorRef.value.innerText.replace(/^"|"$/g, '');
-        if (props.type === 'number') {
-          value = Number(value) === Number(value) ? Number(value) : 0;
+      if (ValueEditorRef.value && edited.value) {
+        let value: any = ValueEditorRef.value.innerText.replace(/^"|"$/g, '');
+        if (props.valueType === 'number') {
+          value = Number(value);
         }
-        if (props.type === 'boolean') value = !!value;
+        if (props.valueType === 'boolean') value = !!value;
         emit('update:value', value);
         emit('change', value);
-        // 强制组件更新
-        isRefresh.value = true;
-        setTimeout(() => {
-          isRefresh.value = false;
-        }, 0);
       }
       emit('blur');
     };
+
     const handleInput = () => {
       edited.value = true;
       // if (valueEditorRef.value) {
@@ -100,15 +80,41 @@ export default defineComponent({
       e.preventDefault();
     };
     return {
+      ValueEditorRef,
       isEdit,
       stateValue,
+      mountedRef,
       handleClick,
       handleBlur,
-      handleEnter,
-      valueEditorRef,
       handleInput,
-      isRefresh,
+      handleEnter,
     };
   },
+  render() {
+    const { valueType, type } = this.$props;
+    const {
+      mountedRef,
+      handleBlur,
+      handleInput,
+      handleClick,
+      stateValue,
+      isEdit,
+    } = this;
+    return (
+      <div spellcheck="false" onClick={() => handleClick()}>
+        <span
+          ref={mountedRef}
+          class={{ 'line-node-edited': isEdit }}
+          onBlur={handleBlur}
+          onInput={handleInput}
+        >
+          {valueType === 'number' || valueType === 'boolean'
+            ? String(stateValue)
+            : null}
+          {valueType === 'string' &&
+            (type === 'value' ? `"${stateValue}"` : String(stateValue))}
+        </span>
+      </div>
+    );
+  },
 });
-</script>

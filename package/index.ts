@@ -1,7 +1,3 @@
-import SimpleJson from './simpleJson';
-import { deepAnalysisJson, deepReductionJson } from './simpleJson/utils';
+import SimpleJson from './render/simple-json';
 
-export * from './simpleJson/type/simple-json';
-
-export { deepAnalysisJson, deepReductionJson };
 export default SimpleJson;
