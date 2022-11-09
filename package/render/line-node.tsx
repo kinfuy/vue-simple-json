@@ -1,5 +1,14 @@
 import { type PropType, computed, defineComponent } from 'vue';
 import ValueEditor from './value.editor';
+import Icon from './icon/Icon.vue';
+import {
+  IconAdd,
+  IconArrowDown,
+  IconArrowRight,
+  IconDelete,
+  IconSwitch,
+} from './icon/libs';
+import LineChildren from './line-children';
 import type { LineTarget } from '../core/line';
 
 export default defineComponent({
@@ -24,9 +33,9 @@ export default defineComponent({
       const LinePrefix = () => {
         const prefix = () => {
           return (
-            <u-icon onClick={() => line.extend()} class="pointer">
-              {line.isExtend ? <USolidCaretDown /> : <USolidCaretRight />}
-            </u-icon>
+            <Icon onClick={() => line.extend()} class="pointer">
+              {line.isExtend ? <IconArrowDown /> : <IconArrowRight />}
+            </Icon>
           );
         };
         return (
@@ -93,31 +102,12 @@ export default defineComponent({
           <div class="line-node-suffix">
             {!line.isRoot && (
               <>
-                <u-dropdown
-                  trigger="click"
-                  v-slots={{
-                    dropdown: () => (
-                      <u-menu
-                        onClick={(val: any) => line.update('type', val.key)}
-                      >
-                        {supportTypes.map((type) => {
-                          return (
-                            <u-menu-item name={type.value}>
-                              {type.label}
-                            </u-menu-item>
-                          );
-                        })}
-                      </u-menu>
-                    ),
-                  }}
-                >
-                  <u-icon class="pointer">
-                    <ULineSwitch />
-                  </u-icon>
-                </u-dropdown>
-                <u-icon class="pointer" onClick={() => line.remove()}>
-                  <ULineDelete />
-                </u-icon>
+                <Icon class="pointer">
+                  <IconSwitch />
+                </Icon>
+                <Icon class="pointer" onClick={() => line.remove()}>
+                  <IconDelete />
+                </Icon>
               </>
             )}
           </div>
@@ -146,9 +136,9 @@ export default defineComponent({
             style={{ 'margin-left': `${(line.level + 1) * 24}px` }}
           >
             <div class="line-node-add-icon" onClick={() => line.insert()}>
-              <u-icon>
-                <ULineAdd />
-              </u-icon>
+              <Icon>
+                <IconAdd />
+              </Icon>
             </div>
           </div>
         )}

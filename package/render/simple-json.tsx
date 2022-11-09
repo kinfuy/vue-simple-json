@@ -39,6 +39,10 @@ export default defineComponent({
     };
   },
   render() {
-    return <LineNode line={this.lineRoot} />;
+    return (
+      <div class="simple-json-editor">
+        <LineNode line={this.lineRoot} />
+      </div>
+    );
   },
 });
