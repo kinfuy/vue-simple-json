@@ -11,6 +11,15 @@ import {
 import LineChildren from './line-children';
 import type { LineTarget } from '../core/line';
 
+const supportTypes = [
+  { label: '数组', value: 'array' },
+  { label: '对象', value: 'object' },
+  { label: '数字', value: 'number' },
+  { label: '布尔值', value: 'boolean' },
+  { label: '字符串', value: 'string' },
+  { label: '时间', value: 'date' },
+];
+
 export default defineComponent({
   name: 'LineNode',
   props: {
@@ -23,11 +32,22 @@ export default defineComponent({
     const isCanAdd = computed(() => {
       return !props.line?.children.some((x) => x.lineError);
     });
+
     return { isCanAdd };
   },
   render() {
     const { isCanAdd } = this;
     const { line } = this.$props;
+
+    const RenderValue = () => {
+      return (
+        <ValueEditor
+          onChange={(value) => line.update('value', value)}
+          valueType={line.valueType}
+          value={line.value}
+        />
+      );
+    };
 
     const RenderLine = () => {
       const LinePrefix = () => {
@@ -47,21 +67,19 @@ export default defineComponent({
       const LineContent = () => {
         return (
           <div
-            class={[
-              'line-node-content',
-              { 'line-error': line.lineError, 'line-hover': !line.lineError },
-            ]}
+            class={['line-node-content', { 'line-error': line.lineError }]}
             title={line.lineError}
           >
             {!line.isRoot ? (
-              <ValueEditor
-                class="line-node-key"
-                disabled={line.parent?.type === 'array'}
-                type="key"
-                onChange={(value) => line.update('key', value)}
-                valueType="string"
-                value={line.key}
-              />
+              <div class="line-node-key">
+                <ValueEditor
+                  disabled={line.parent?.type === 'array'}
+                  type="key"
+                  onChange={(value) => line.update('key', value)}
+                  valueType="string"
+                  value={line.key}
+                />
+              </div>
             ) : (
               'state'
             )}
@@ -78,33 +96,20 @@ export default defineComponent({
             {line.type === 'line' && (
               <>
                 <div class="line-node-division">:</div>
-                <ValueEditor
-                  class="line-node-value"
-                  onChange={(value) => line.update('value', value)}
-                  valueType={line.valueType}
-                  value={line.value}
-                />
+                <div class={['line-node-value', `${line.valueType}`]}>
+                  <RenderValue />
+                </div>
               </>
             )}
           </div>
         );
       };
 
-      const supportTypes = [
-        { label: '数组', value: 'array' },
-        { label: '对象', value: 'object' },
-        { label: '数字', value: 'number' },
-        { label: '布尔值', value: 'boolean' },
-        { label: '字符串', value: 'string' },
-      ];
       const LineSuffix = () => {
         return (
           <div class="line-node-suffix">
             {!line.isRoot && (
               <>
-                <Icon class="pointer">
-                  <IconSwitch />
-                </Icon>
                 <Icon class="pointer" onClick={() => line.remove()}>
                   <IconDelete />
                 </Icon>

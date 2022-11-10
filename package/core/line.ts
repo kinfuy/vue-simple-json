@@ -1,9 +1,11 @@
+import { typeOf } from './editor';
+
 export type lineType = 'line' | 'array' | 'object';
 export interface LineTarget {
   parent: LineTarget | null;
   type: 'line' | 'array' | 'object';
   key: string | number;
-  value?: string | number | boolean;
+  value?: string | number | boolean | Date;
   valueType: string;
   children: LineTarget[];
   level: number;
@@ -38,7 +40,7 @@ export class Line implements LineTarget {
 
   isRoot = false;
 
-  value?: string | number | boolean | undefined;
+  value?: string | number | boolean | Date | undefined;
 
   children: LineTarget[] = [];
 
@@ -54,7 +56,7 @@ export class Line implements LineTarget {
     this.key = options.key;
     this.level = options.level;
     this.value = options.value;
-    this.valueType = typeof options.value;
+    this.valueType = typeOf(options.value);
     this.isRoot = !parent;
   }
 
@@ -71,10 +73,7 @@ export class Line implements LineTarget {
     const index = this.children.indexOf(newLine);
 
     const isExit = this.children.some(
-      (x) =>
-        x.key === newLine.key &&
-        x.level === newLine.level &&
-        x.value === newLine.value
+      (x) => x.key === newLine.key && x.level === newLine.level
     );
 
     if (index > -1 || isExit) {
@@ -128,6 +127,7 @@ export class Line implements LineTarget {
       const validateKey = /^[a-zA-Z\\$_][a-zA-Z\d_]*$/;
       if (!validateKey.test(value)) {
         this.error('key不合法');
+        this.key = value;
         return;
       }
       if (
@@ -144,7 +144,7 @@ export class Line implements LineTarget {
       return;
     }
     if (type === 'value') {
-      // TODO 验证数据类型
+      // TODO 验证数据类型 ?
       this.value = value;
     }
 
@@ -153,6 +153,13 @@ export class Line implements LineTarget {
       else {
         this.type = 'line';
         this.valueType = value;
+        if (this.valueType === 'string') this.value = String(this.value);
+        if (this.valueType === 'number')
+          this.value = Number.isNaN(Number(this.value))
+            ? 0
+            : Number(this.value);
+        if (this.valueType === 'boolean') this.value = Boolean(this.value);
+        if (this.valueType === 'date') this.value = new Date();
       }
     }
   }

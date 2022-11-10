@@ -1,7 +1,8 @@
 @simple-json-editor-prefix: ~'simple-json-editor';
 
 .@{simple-json-editor-prefix} {
-  &-header{
+ 
+  &-header {
     display: flex;
     width: 100%;
     justify-content: flex-end;
@@ -10,46 +11,60 @@
   .line-node {
     display: flex;
     align-items: flex-start;
+    min-height: 30px;
+    font-size: 14px;
     .line-node-prefix {
       width: 20px;
     }
-    .line-error{
-      color: red;
-      text-decoration: underline wavy;
-
-    }
-    .line-hover{
-      .line-node-key {
-        &:hover {
-          color: #4d9bee;
-        }
-      }
+    .line-error {
+      .line-node-key,
       .line-node-value {
-        &:hover {
-          color: #4d9bee;
-        }
+        text-decoration: underline wavy red;
       }
-      
     }
+
     .line-node-content {
       width: 100%;
       display: flex;
 
       .line-node-division {
-        margin: 0 5px;
+        margin: 0 8px 0 4px;
       }
 
-
-      .line-node-edited{
-        -webkit-user-modify: read-write-plaintext-only; 
-        display: inline-block;
+      .line-node-edited {
+        -webkit-user-modify: read-write-plaintext-only;
         outline: none;
-        box-sizing: border-box;
         border: none;
       }
-      .line-node-value {  
+      .line-node-key {
+        font-weight: 500;
+        color: #8812a1;
+      }
+      .line-node-value {
         word-break: break-all;
         height: 100%;
+        &.string {
+          color: #ac4b1e;
+        }
+        .string{
+          position: relative;
+          &::after{
+            position: absolute;
+            right: -6px;
+            content: '"';
+          }
+          &::before{
+            position: absolute;
+            left: -6px;
+            content: '"';
+          }
+        }
+        &.number {
+          color: #1a1aa6;
+        }
+        &.boolean {
+          color: #1a1aa6;
+        }
       }
       .line-children-length {
         margin-left: 10px;
@@ -61,6 +76,7 @@
   }
   .line-node-add {
     padding-left: 20px;
+    margin-bottom: 10px;
     .line-node-add-icon {
       display: inline-block;
       padding: 1px 3px;

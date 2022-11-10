@@ -12,7 +12,7 @@ export default defineComponent({
       default: 'string',
     },
     value: {
-      type: [String, Number, Boolean],
+      type: [String, Number, Boolean, Date],
       default: '',
     },
     disabled: {
@@ -22,7 +22,7 @@ export default defineComponent({
   },
   emits: ['update:value', 'change', 'focus', 'blur'],
   setup(props, { emit }) {
-    const ValueEditorRef = ref();
+    const valueEditorRef = ref();
     const stateValue = ref<string | number | boolean | Date>('');
 
     const isEdit = ref(false);
@@ -36,15 +36,15 @@ export default defineComponent({
       }
     );
     const mountedRef = (el: any) => {
-      ValueEditorRef.value = el;
+      valueEditorRef.value = el;
     };
 
     const handleClick = () => {
       if (!props.disabled) {
         isEdit.value = true;
         nextTick(() => {
-          if (ValueEditorRef.value) {
-            ValueEditorRef.value.focus();
+          if (valueEditorRef.value) {
+            valueEditorRef.value.focus();
             emit('focus');
           }
         });
@@ -54,65 +54,45 @@ export default defineComponent({
       }
     };
 
-    const edited = ref(false);
-    const handleBlur = () => {
-      isEdit.value = false;
-      if (ValueEditorRef.value && edited.value) {
-        let value: any = ValueEditorRef.value.innerText.replace(/^"|"$/g, '');
-        if (props.valueType === 'number') {
-          value = Number(value);
-        }
-        if (props.valueType === 'boolean') value = !!value;
-        emit('update:value', value);
-        emit('change', value);
-      }
-      emit('blur');
+    const handleChange = () => {
+      let value = valueEditorRef.value.innerText.replace(/^"|"$/g, '');
+      if (props.valueType === 'number')
+        value = Number.isNaN(Number(value)) ? 0 : Number(value);
+      emit('update:value', value);
+      emit('change', value);
+      handleBlur();
     };
 
-    const handleInput = () => {
-      edited.value = true;
-      // if (valueEditorRef.value) {
-      //   emit('update:value', valueEditorRef.value.innerText);
-      //   emit('change', valueEditorRef.value.innerText);
-      // }
+    const handleBlur = () => {
+      emit('blur');
+      isEdit.value = false;
     };
+
     const handleEnter = (e: KeyboardEvent) => {
       e.preventDefault();
     };
     return {
-      ValueEditorRef,
+      valueEditorRef,
       isEdit,
       stateValue,
       mountedRef,
       handleClick,
-      handleBlur,
-      handleInput,
+      handleChange,
       handleEnter,
     };
   },
   render() {
-    const { valueType, type } = this.$props;
-    const {
-      mountedRef,
-      handleBlur,
-      handleInput,
-      handleClick,
-      stateValue,
-      isEdit,
-    } = this;
+    const { valueType } = this.$props;
+    const { mountedRef, handleChange, handleClick, stateValue, isEdit } = this;
+
     return (
       <div spellcheck="false" onClick={() => handleClick()}>
         <span
           ref={mountedRef}
-          class={{ 'line-node-edited': isEdit }}
-          onBlur={handleBlur}
-          onInput={handleInput}
+          class={[valueType, { 'line-node-edited': isEdit }]}
+          onBlur={() => handleChange()}
         >
-          {valueType === 'number' || valueType === 'boolean'
-            ? String(stateValue)
-            : null}
-          {valueType === 'string' &&
-            (type === 'value' ? `"${stateValue}"` : String(stateValue))}
+          {String(stateValue)}
         </span>
       </div>
     );
