@@ -1,7 +1,8 @@
-import { typeOf } from './editor';
+import { _UUID, typeOf } from '../utils/tool';
 
 export type lineType = 'line' | 'array' | 'object';
 export interface LineTarget {
+  id: string;
   parent: LineTarget | null;
   type: 'line' | 'array' | 'object';
   key: string | number;
@@ -30,6 +31,7 @@ export interface LineOptions {
   isExtend?: boolean;
 }
 export class Line implements LineTarget {
+  id: string = _UUID();
   parent: LineTarget | null = null;
 
   type: lineType;

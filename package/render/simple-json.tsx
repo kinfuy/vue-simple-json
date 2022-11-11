@@ -1,6 +1,7 @@
 import { computed, defineComponent, watch } from 'vue';
 import { JsonEditor } from '../core/editor';
 import LineNode from './line-node';
+import type { SimpleJsonConfig } from './defaultConfig';
 import type { PropType } from 'vue';
 
 export default defineComponent({
@@ -9,6 +10,22 @@ export default defineComponent({
     json: {
       type: Object as PropType<Record<string, any>>,
       required: true,
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
+    extendAll: {
+      type: Boolean,
+      default: false,
+    },
+    extendLevel: {
+      type: Number,
+      default: 1,
+    },
+    extraConfig: {
+      type: Object as PropType<SimpleJsonConfig>,
+      default: undefined,
     },
   },
   setup(props) {

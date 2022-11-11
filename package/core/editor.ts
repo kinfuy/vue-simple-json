@@ -1,4 +1,5 @@
 import { ref } from 'vue';
+import { typeOf } from '../utils/tool';
 import { Line } from './line';
 import type { LineTarget } from './line';
 
@@ -35,7 +36,7 @@ export class JsonEditor {
     );
   }
 
-  private isObjectLine(obj: Record<string, any>, parent: Line) {
+  private isObjectLine(obj: Record<string, any>, parent: LineTarget) {
     const line: Line[] = [];
     const objKeys = Object.keys(obj);
     for (let i = 0; i < objKeys.length; i++) {
@@ -145,20 +146,3 @@ export class JsonEditor {
     return jsonResult;
   }
 }
-
-export const typeOf = (obj: any): string => {
-  const { toString } = Object.prototype;
-  const map: { [key: string]: string } = {
-    '[object Boolean]': 'boolean',
-    '[object Number]': 'number',
-    '[object String]': 'string',
-    '[object Function]': 'function',
-    '[object Array]': 'array',
-    '[object Date]': 'date',
-    '[object RegExp]': 'regExp',
-    '[object Undefined]': 'undefined',
-    '[object Null]': 'null',
-    '[object Object]': 'object',
-  };
-  return map[toString.call(obj)];
-};
