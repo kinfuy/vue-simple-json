@@ -1,4 +1,4 @@
-import { type PropType, computed, defineComponent } from 'vue';
+import { type PropType, computed, defineComponent, inject } from 'vue';
 import ValueEditor from './value.editor';
 import Icon from './icon/Icon.vue';
 import {
@@ -9,6 +9,7 @@ import {
   IconSwitch,
 } from './icon/libs';
 import LineChildren from './line-children';
+import { SIMPLEJSON_INJECTKEY } from './simple-json';
 import type { LineTarget } from '../core/line';
 
 const supportTypes = [
@@ -33,10 +34,30 @@ export default defineComponent({
       return !props.line?.children.some((x) => x.lineError);
     });
 
-    return { isCanAdd };
+    const { clearActive, setActive, activekeys } =
+      inject(SIMPLEJSON_INJECTKEY)!;
+
+    const getKeys = (line: LineTarget) => {
+      const ids = [];
+      ids.push(line.id);
+      line.children.forEach((x) => {
+        ids.push(x.id);
+        if (line.children.length > 0) {
+          ids.push(...getKeys(x));
+        }
+      });
+      return ids;
+    };
+
+    const mouseenter = () => {
+      const ids = getKeys(props.line);
+      setActive(ids);
+    };
+
+    return { isCanAdd, clearActive, setActive, activekeys, mouseenter };
   },
   render() {
-    const { isCanAdd } = this;
+    const { isCanAdd, clearActive, activekeys, mouseenter } = this;
     const { line } = this.$props;
 
     const RenderValue = () => {
@@ -129,19 +150,25 @@ export default defineComponent({
     return (
       <>
         <div
-          class="line-node"
-          style={{ 'margin-left': `${line.level * 24}px` }}
+          class={['line-node', { 'node-active': activekeys.includes(line.id) }]}
+          style={{ 'padding-left': `${line.level * 24}px` }}
         >
           <RenderLine />
         </div>
         {line.isExtend ? <LineChildren line={line}></LineChildren> : null}
         {line.type !== 'line' && line.isExtend && isCanAdd && (
           <div
-            class="line-node-add "
-            style={{ 'margin-left': `${(line.level + 1) * 24}px` }}
+            class={[
+              'line-node-add',
+              { 'node-active': activekeys.includes(line.id) },
+            ]}
+            style={{ 'padding-left': `${(line.level + 1) * 24 + 20}px` }}
           >
             <div class="line-node-add-icon" onClick={() => line.insert()}>
-              <Icon>
+              <Icon
+                onMouseenter={() => mouseenter()}
+                onMouseleave={() => clearActive()}
+              >
                 <IconAdd />
               </Icon>
             </div>
