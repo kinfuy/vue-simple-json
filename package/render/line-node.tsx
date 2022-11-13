@@ -164,7 +164,13 @@ export default defineComponent({
             ]}
             style={{ 'padding-left': `${(line.level + 1) * 24 + 20}px` }}
           >
-            <div class="line-node-add-icon" onClick={() => line.insert()}>
+            <div
+              class="line-node-add-icon"
+              onClick={() => {
+                line.insert();
+                clearActive();
+              }}
+            >
               <Icon
                 onMouseenter={() => mouseenter()}
                 onMouseleave={() => clearActive()}
