@@ -1,5 +1,5 @@
 import { type PropType, computed, defineComponent, inject } from 'vue';
-import ValueEditor from './value.editor';
+import ValueEditor from './value-editor';
 import Icon from './icon/Icon.vue';
 import {
   IconAdd,
